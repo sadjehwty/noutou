@@ -1,7 +1,7 @@
 #%RAML 0.8
 title: Steroids Data
 mediaType: application/json
-baseUri: https://rest-api.appgyver.com/v1/
+baseUri: https://rest-api.appgyver.com/v1
 
 traits:
     - securedBySteroidsApiKey:
@@ -16,16 +16,14 @@ traits:
             default: 81067
   
 schemas:
-  - Person_collection: '{"$schema":"http://json-schema.org/schema","title":"Person collection","type":"object","properties":{"objects":{"type":"array","items":{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical Person representation","properties":{"name":{"type":"string"},"surname":{"type":"string"},"nickname":{"type":"string"},"id":{"type":"integer"}},"required":[]}}}}'
-  - Person_member: '{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical Person representation","properties":{"object":{"type":"object","properties":{"name":{"type":"string"},"surname":{"type":"string"},"nickname":{"type":"string"},"id":{"type":"integer"}},"required":[]}}}'
+  - Person_collection: '{"$schema":"http://json-schema.org/schema","title":"Person collection","type":"object","properties":{"objects":{"type":"array","items":{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical Person representation","properties":{"name":{"type":"string"},"surname":{"type":"string"},"nickname":{"type":"string"},"id":{"type":"integer"},"id_journey":{"type":"integer"}},"required":[]}}}}'
+  - Person_member: '{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical Person representation","properties":{"object":{"type":"object","properties":{"name":{"type":"string"},"surname":{"type":"string"},"nickname":{"type":"string"},"id":{"type":"integer"},"id_journey":{"type":"integer"}},"required":[]}}}'
   - Journey_collection: '{"$schema":"http://json-schema.org/schema","title":"Journey collection","type":"object","properties":{"objects":{"type":"array","items":{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical Journey representation","properties":{"name":{"type":"string"},"closed":{"type":"boolean"}},"required":[]}}}}'
   - Journey_member: '{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical Journey representation","properties":{"object":{"type":"object","properties":{"name":{"type":"string"},"closed":{"type":"boolean"}},"required":[]}}}'
   - Cost_collection: '{"$schema":"http://json-schema.org/schema","title":"Cost collection","type":"object","properties":{"objects":{"type":"array","items":{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical Cost representation","properties":{"date":{"type":"string"},"name":{"type":"string"},"id_journey":{"type":"integer"},"id":{"type":"integer"}},"required":[]}}}}'
   - Cost_member: '{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical Cost representation","properties":{"object":{"type":"object","properties":{"date":{"type":"string"},"name":{"type":"string"},"id_journey":{"type":"integer"},"id":{"type":"integer"}},"required":[]}}}'
   - Pay_collection: '{"$schema":"http://json-schema.org/schema","title":"Pay collection","type":"object","properties":{"objects":{"type":"array","items":{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical Pay representation","properties":{"value":{"type":"integer"},"id_person":{"type":"integer"},"id_cost":{"type":"integer"}},"required":[]}}}}'
   - Pay_member: '{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical Pay representation","properties":{"object":{"type":"object","properties":{"value":{"type":"integer"},"id_person":{"type":"integer"},"id_cost":{"type":"integer"}},"required":[]}}}'
-  - JourneyPerson_collection: '{"$schema":"http://json-schema.org/schema","title":"JourneyPerson collection","type":"object","properties":{"objects":{"type":"array","items":{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical JourneyPerson representation","properties":{"id_journey":{"type":"integer"},"id_person":{"type":"integer"}},"required":[]}}}}'
-  - JourneyPerson_member: '{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical JourneyPerson representation","properties":{"object":{"type":"object","properties":{"id_journey":{"type":"integer"},"id_person":{"type":"integer"}},"required":[]}}}'
 
 resourceTypes:
   - dolan_db_collection:
@@ -142,16 +140,6 @@ resourceTypes:
   description: |
     {
       "resourceName": "Pay",
-      "identifierKey": "id"
-    }
-  type: dolan_db_collection
-  /{id}:
-    type: dolan_db_member
-
-/JourneyPerson:
-  description: |
-    {
-      "resourceName": "JourneyPerson",
       "identifierKey": "id"
     }
   type: dolan_db_collection
