@@ -1,3 +1,3 @@
 angular
   .module('cost')
-  .constant('Cost', supersonic.data.model('Cost'));
+  .constant('Cost', supersonic.data.model('cost'));

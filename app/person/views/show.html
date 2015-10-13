@@ -8,17 +8,17 @@
   <div class="padding">
     <div ng-show="showSpinner" ng-include="'_spinner.html'"></div>
     <div ng-hide="showSpinner">
-      <h2 ng-bind="person['name']"></h2>
+      <h2 ng-bind="person['id']"></h2>
       
       
+      
+       <p>id_journey: <span ng-bind="person['id_journey']"></span></p> 
+      
+       <p>name: <span ng-bind="person['name']"></span></p> 
       
        <p>surname: <span ng-bind="person['surname']"></span></p> 
       
        <p>nickname: <span ng-bind="person['nickname']"></span></p> 
-      
-       <p>id: <span ng-bind="person['id']"></span></p> 
-      
-       <p>id_journey: <span ng-bind="person['id_journey']"></span></p> 
       
 
 
