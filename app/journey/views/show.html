@@ -1,7 +1,7 @@
 <div ng-controller="ShowController">
   <super-navbar>
     <super-navbar-title>
-      Show
+      {{journey['name']}}
     </super-navbar-title>
   </super-navbar>
 
@@ -9,14 +9,8 @@
     <div ng-show="showSpinner" ng-include="'_spinner.html'"></div>
     <div ng-hide="showSpinner">
       <h2 ng-bind="journey['name']"></h2>
-      
-      
-      
+            
        <p>closed: <span ng-bind="journey['closed']"></span></p> 
-      
-       <p>id: <span ng-bind="journey['id']"></span></p> 
-      
-
 
       <super-modal-show location="journey#edit?id={{ journey.id }}">
         <button class="button button-block button-positive">
