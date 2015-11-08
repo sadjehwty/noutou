@@ -16,14 +16,16 @@ traits:
             default: 82656
   
 schemas:
-  - person_collection: '{"$schema":"http://json-schema.org/schema","title":"person collection","type":"object","properties":{"objects":{"type":"array","items":{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical person representation","properties":{"id":{"type":"integer"},"id_journey":{"type":"integer"},"name":{"type":"string"},"surname":{"type":"string"},"nickname":{"type":"string"}},"required":[]}}}}'
-  - person_member: '{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical person representation","properties":{"object":{"type":"object","properties":{"id":{"type":"integer"},"id_journey":{"type":"integer"},"name":{"type":"string"},"surname":{"type":"string"},"nickname":{"type":"string"}},"required":[]}}}'
+  - person_collection: '{"$schema":"http://json-schema.org/schema","title":"person collection","type":"object","properties":{"objects":{"type":"array","items":{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical person representation","properties":{"id":{"type":"integer"},"name":{"type":"string"},"surname":{"type":"string"},"nickname":{"type":"string"}},"required":[]}}}}'
+  - person_member: '{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical person representation","properties":{"object":{"type":"object","properties":{"id":{"type":"integer"},"name":{"type":"string"},"surname":{"type":"string"},"nickname":{"type":"string"}},"required":[]}}}'
   - journey_collection: '{"$schema":"http://json-schema.org/schema","title":"journey collection","type":"object","properties":{"objects":{"type":"array","items":{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical journey representation","properties":{"name":{"type":"string"},"closed":{"type":"string"},"id":{"type":"integer"}},"required":[]}}}}'
   - journey_member: '{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical journey representation","properties":{"object":{"type":"object","properties":{"name":{"type":"string"},"closed":{"type":"string"},"id":{"type":"integer"}},"required":[]}}}'
   - cost_collection: '{"$schema":"http://json-schema.org/schema","title":"cost collection","type":"object","properties":{"objects":{"type":"array","items":{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical cost representation","properties":{"date":{"type":"string"},"name":{"type":"string"},"id":{"type":"integer"},"id_journey":{"type":"integer"}},"required":[]}}}}'
   - cost_member: '{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical cost representation","properties":{"object":{"type":"object","properties":{"date":{"type":"string"},"name":{"type":"string"},"id":{"type":"integer"},"id_journey":{"type":"integer"}},"required":[]}}}'
   - pay_collection: '{"$schema":"http://json-schema.org/schema","title":"pay collection","type":"object","properties":{"objects":{"type":"array","items":{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical pay representation","properties":{"value":{"type":"string"},"id_person":{"type":"integer"},"id":{"type":"integer"},"id_cost":{"type":"integer"}},"required":[]}}}}'
   - pay_member: '{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical pay representation","properties":{"object":{"type":"object","properties":{"value":{"type":"string"},"id_person":{"type":"integer"},"id":{"type":"integer"},"id_cost":{"type":"integer"}},"required":[]}}}'
+  - journeyspeople_collection: '{"$schema":"http://json-schema.org/schema","title":"journeyspeople collection","type":"object","properties":{"objects":{"type":"array","items":{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical journeyspeople representation","properties":{"id_journey":{"type":"integer"},"id_person":{"type":"integer"}},"required":[]}}}}'
+  - journeyspeople_member: '{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical journeyspeople representation","properties":{"object":{"type":"object","properties":{"id_journey":{"type":"integer"},"id_person":{"type":"integer"}},"required":[]}}}'
 
 resourceTypes:
   - dolan_db_collection:
@@ -140,6 +142,16 @@ resourceTypes:
   description: |
     {
       "resourceName": "pay",
+      "identifierKey": "id"
+    }
+  type: dolan_db_collection
+  /{id}:
+    type: dolan_db_member
+
+/journeyspeople:
+  description: |
+    {
+      "resourceName": "journeyspeople",
       "identifierKey": "id"
     }
   type: dolan_db_collection

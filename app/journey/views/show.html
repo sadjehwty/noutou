@@ -8,9 +8,8 @@
   <div class="padding">
     <div ng-show="showSpinner" ng-include="'_spinner.html'"></div>
     <div ng-hide="showSpinner">
-      <h2 ng-bind="journey['name']"></h2>
             
-       <p>closed: <span ng-bind="journey['closed']"></span></p> 
+       <h3>closed: <span ng-bind="journey['closed']"></span></h3> 
 
       <super-modal-show location="journey#edit?id={{ journey.id }}">
         <button class="button button-block button-positive">
