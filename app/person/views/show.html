@@ -1,26 +1,20 @@
 <div ng-controller="ShowController">
   <super-navbar>
     <super-navbar-title>
-      Show
+      {{person['nickname']}}
     </super-navbar-title>
   </super-navbar>
 
   <div class="padding">
     <div ng-show="showSpinner" ng-include="'_spinner.html'"></div>
     <div ng-hide="showSpinner">
-      <h2 ng-bind="person['id']"></h2>
+      <h2 ng-bind="person['nickname']"></h2>
       
       
-      
-       <p>id_journey: <span ng-bind="person['id_journey']"></span></p> 
       
        <p>name: <span ng-bind="person['name']"></span></p> 
       
-       <p>surname: <span ng-bind="person['surname']"></span></p> 
-      
-       <p>nickname: <span ng-bind="person['nickname']"></span></p> 
-      
-
+       <p>surname: <span ng-bind="person['surname']"></span></p>  
 
       <super-modal-show location="person#edit?id={{ person.id }}">
         <button class="button button-block button-positive">
