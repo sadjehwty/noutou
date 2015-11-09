@@ -5,8 +5,7 @@
 <svg xmlns="http://www.w3.org/2000/svg"
      width="0.266667in" height="0.266667in"
      viewBox="0 0 24 24">
-  <path id="Tracciato importato"
-        fill="none" stroke="black" stroke-width="1"
+  <path stroke="black" stroke-width="1"
         d="M 19.28,3.35
            C 19.54,3.45 19.72,3.70 19.72,3.99
              19.72,3.99 19.72,20.84 19.72,20.84
