@@ -5,7 +5,7 @@
 
 navigation-bar {
   background-color: #ff1493;
-  color: #ffffff;
+  color: #000000;
   padding-left: 6px;
   padding-right: 6px;
 }
@@ -17,7 +17,7 @@ navigation-bar title {
 }
 
 navigation-bar button {
-  color: #ffffff;
+  color: #000000;
   font-weight: 300;
   margin-left: 6px;
   margin-right: 6px;
@@ -29,7 +29,7 @@ navigation-bar back-indicator {
 }
 
 navigation-bar back-button {
-  color: #ffffff;
+  color: #000000;
   font-weight: 300;
 }
 
@@ -39,17 +39,17 @@ navigation-bar back-button {
 
 tab-bar {
   background-color: #ffffff;
-  border-top: 1px #d8d8d8 solid;
+  border-top: 1px #000000 solid;
 }
 
 tab-bar tab-bar-item {
-  color: #b0b1b4;
+  color: #ff1493;
   font-family: "Roboto";
   font-size: 10px;
 }
 
 tab-bar tab-bar-item:selected {
-  color: #1596f7;
+  color: #ff1493;
 }
 
 tab-bar divider {
@@ -57,7 +57,7 @@ tab-bar divider {
 }
 
 tab-bar tab-bar-item marker-top:selected {
-  background-color: #1596f7;
+  background-color: #ff1493;
 }
 
 tab-bar-item#person {

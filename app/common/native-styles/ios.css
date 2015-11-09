@@ -4,34 +4,34 @@
  ***********************************************************/
 
 navigation-bar {
-  background-color: #00B5FF;
-  color: #ffffff;
+  background-color: #ff1493;
+  color: #000000;
 }
 
 navigation-bar title {
-  color: #ffffff;
+  color: #000000;
   font-size: 18px;
   font-weight: 600;
 }
 
 navigation-bar button, navigation-bar back-bar-button {
-  color: #ffffff;
+  color: #000000;
   font-weight: 300;
 }
 
 tab-bar {
   background-color: #ffffff;
-  border-top: 1px #d8d8d8 solid;
+  border-top: 1px #000000 solid;
 }
 
 tab-bar tab-bar-item {
-  color: #b0b1b4;
+  color: #ff1493;
   font-family: "Avenir";
   font-size: 10px;
 }
 
 tab-bar tab-bar-item:selected {
-  color: #1596f7;
+  color: #ff1493;
 }
 
 tab-bar-item#person {
