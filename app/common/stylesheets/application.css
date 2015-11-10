@@ -3,3 +3,8 @@
   text-align: center;
   font-weight: 600;
 }
+.button.button-positive{
+  background: #f00ff0;
+  border: #ff0000;
+  color: #000000;
+}
