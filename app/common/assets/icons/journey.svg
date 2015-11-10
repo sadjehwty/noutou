@@ -3,9 +3,11 @@
               "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
 
 <svg xmlns="http://www.w3.org/2000/svg"
-     width="0.266667in" height="0.266667in"
+     x="0px" y="0px"
+     width="24px" height="24px"
+     style="enable-background:new 0 0 24 24;"
      viewBox="0 0 24 24">
-  <path stroke="black" stroke-width="1"
+  <path style="fill:#000000;"
         d="M 19.28,3.35
            C 19.54,3.45 19.72,3.70 19.72,3.99
              19.72,3.99 19.72,20.84 19.72,20.84
