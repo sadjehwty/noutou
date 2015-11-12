@@ -1,22 +1,21 @@
 <div ng-controller="ShowController">
   <super-navbar>
-    <super-navbar-title>
-      {{journey['name']}}
-    </super-navbar-title>
+    <super-navbar-title ng-bind="journey['name']"></super-navbar-title>
   </super-navbar>
 
   <div class="padding">
     <div ng-show="showSpinner" ng-include="'_spinner.html'"></div>
     <div ng-hide="showSpinner">
-            
-       <h3>closed: <span ng-bind="journey['closed']"></span></h3> 
-
+      <div ng-show="journey['closed']!=''">
+        <h3>closed: <span ng-bind="journey['closed']"></span></h3> 
+      </div>
+      <div ng-show="journey['closed']==''">
       <super-modal-show location="journey#edit?id={{ journey.id }}">
         <button class="button button-block button-positive">
           Edit
         </button>
       </super-modal-show>
-
+      </div>
       <button ng-click="remove(journey.id)" class="button button-block button-negative">
         Remove
       </button>

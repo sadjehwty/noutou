@@ -4,7 +4,12 @@
   font-weight: 600;
 }
 .button.button-positive{
-  background: #f00ff0;
-  border: #ff0000;
+  background: #ff1493;
+  border: #000000;
   color: #000000;
+}
+.button-block.button-negative{
+  background: #000000;
+  border: #ff1493;
+  color: #ff1493;
 }

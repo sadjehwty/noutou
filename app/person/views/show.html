@@ -1,8 +1,6 @@
 <div ng-controller="ShowController">
   <super-navbar>
-    <super-navbar-title>
-      {{person['nickname']}}
-    </super-navbar-title>
+    <super-navbar-title ng-bind="person['nickname']"></super-navbar-title>
   </super-navbar>
 
   <div class="padding">
