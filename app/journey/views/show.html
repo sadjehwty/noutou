@@ -6,10 +6,10 @@
   <div class="padding">
     <div ng-show="showSpinner" ng-include="'_spinner.html'"></div>
     <div ng-hide="showSpinner">
-      <div ng-show="journey['closed']!=''">
+      <div ng-show="journey.is_close()">
         <h3>closed: <span ng-bind="journey['closed']"></span></h3> 
       </div>
-      <div ng-show="journey['closed']==''">
+      <div ng-show="!journey.is_close()">
       <super-modal-show location="journey#edit?id={{ journey.id }}">
         <button class="button button-block button-positive">
           Edit
