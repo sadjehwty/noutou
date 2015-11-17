@@ -3,19 +3,24 @@
     <super-navbar-title ng-bind="journey['name']"></super-navbar-title>
   </super-navbar>
 
-  <div class="padding">
-    <div ng-show="showSpinner" ng-include="'_spinner.html'"></div>
-    <div ng-hide="showSpinner">
-      <div ng-show="journey.is_close()">
-        <h3>closed: <span ng-bind="journey['closed']"></span></h3> 
-      </div>
-      <div ng-show="!journey.is_close()">
+<div class="padding">
+  <div ng-show="showSpinner" ng-include="'_spinner.html'"></div>
+  <div ng-hide="showSpinner">
+    <div ng-show="journey.is_close()">
+      <h3>closed: <span ng-bind="journey['closed']"></span></h3> 
+    </div>
+    <div ng-show="!journey.is_close()">
       <super-modal-show location="journey#edit?id={{ journey.id }}">
         <button class="button button-block button-positive">
           Edit
         </button>
       </super-modal-show>
-      </div>
+      <super-navigate location="cost#show" data-params-id="{{ cost.id }}" ng-repeat="cost in costs">
+        <li class="item item-icon-right">
+          <span ng-bind="cost['date']"></span>
+          <i class="icon super-ios-arrow-right"></i>
+        </li>
+      </super-navigate>
       <button ng-click="remove(journey.id)" class="button button-block button-negative">
         Remove
       </button>
