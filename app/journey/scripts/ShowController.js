@@ -11,7 +11,8 @@ angular
           $scope.journey = journey;
           $scope.showSpinner = false;
         });
-        journey.costs().whenChanged( function (costs) {
+        var j=new Journey(journey);
+        j.costs().whenChanged( function (costs) {
           $scope.$apply( function () {
             $scope.costs = costs;
           });
