@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component type="Form" name="Main" cloudDestinationProperty="Main" scrollableY="false" layout="BorderLayout" borderLayoutAbsoluteCenter="false" title="Tabs" >
+  <component type="Tabs" name="Tabs1" cloudDestinationProperty="Tabs1" tabPlacement="2" >
+    <layoutConstraint value="Center" />
+    <custom name="titles" type="java.lang.String" array="true" dimensions="1" >
+      <str>Users</str>
+      <str>Trips</str>
+    </custom>
+    <component type="Container" name="Container" tabTitle="Users" cloudDestinationProperty="Container" layout="BorderLayout" borderLayoutAbsoluteCenter="false" >
+      <component type="MultiList" name="MultiList" cloudDestinationProperty="MultiList" >
+        <layoutConstraint value="Center" />
+        <mapItems>
+          <stringItem key="Line2" value="more..." />
+          <stringItem key="Line1" value="Entry 1" />
+        </mapItems>
+        <mapItems>
+          <stringItem key="Line2" value="more..." />
+          <stringItem key="Line1" value="Entry 2" />
+        </mapItems>
+        <mapItems>
+          <stringItem key="Line2" value="more..." />
+          <stringItem key="Line1" value="Entry 3" />
+        </mapItems>
+      </component>
+    </component>
+    <component type="Container" name="Container1" tabTitle="Trips" cloudDestinationProperty="Container1" layout="BorderLayout" borderLayoutAbsoluteCenter="false" >
+      <component type="MultiList" name="MultiList1" cloudDestinationProperty="MultiList1" >
+        <layoutConstraint value="Center" />
+        <mapItems>
+          <stringItem key="Line2" value="more..." />
+          <stringItem key="Line1" value="Entry 1" />
+        </mapItems>
+        <mapItems>
+          <stringItem key="Line2" value="more..." />
+          <stringItem key="Line1" value="Entry 2" />
+        </mapItems>
+        <mapItems>
+          <stringItem key="Line2" value="more..." />
+          <stringItem key="Line1" value="Entry 3" />
+        </mapItems>
+      </component>
+    </component>
+  </component>
+</component>
