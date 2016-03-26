@@ -26,7 +26,18 @@
       <button ng-click="remove(journey.id)" class="button button-block button-negative">
         Remove
       </button>
-      <super-modal-show location="cost#new" data-params-id="{{ journey.id }}" >
+      <ul class="list" ng-hide="costs.length == 0">
+        <super-navigate location="cost#show" data-params-id="{{ cost.id }}" ng-repeat="cost in costs">
+          <li class="item item-icon-right">
+            <span ng-bind="cost['date']"></span>
+            <i class="icon super-ios-arrow-right"></i>
+          </li>
+        </super-navigate>
+      </ul>
+      <h4 ng-show="costs.length == 0" class="assertive padding">
+        No costs found. Create one?
+      </h4>
+      <super-modal-show location="cost#new" data-params-id="{{ journey.id }}">
         <span class="new">+</span>
       </super-modal-show>
     </div>
