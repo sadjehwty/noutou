@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  when: 2017-12-01 07:58:57
+  travel_id: 1
+
+two:
+  name: MyString
+  when: 2017-12-01 07:58:57
+  travel_id: 1
