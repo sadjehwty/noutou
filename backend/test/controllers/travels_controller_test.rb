@@ -12,7 +12,7 @@ class TravelsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create travel" do
     assert_difference('Travel.count') do
-      post travels_url, params: { travel: { name: @travel.name } }, as: :json
+      post travels_url, params: { travel: { name: @travel.name, user_id: @travel.user_id } }, as: :json
     end
 
     assert_response 201
@@ -24,7 +24,7 @@ class TravelsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update travel" do
-    patch travel_url(@travel), params: { travel: { name: @travel.name } }, as: :json
+    patch travel_url(@travel), params: { travel: { name: @travel.name, user_id: @travel.user_id } }, as: :json
     assert_response 200
   end
 

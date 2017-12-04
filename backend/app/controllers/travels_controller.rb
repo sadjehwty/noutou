@@ -46,6 +46,6 @@ class TravelsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def travel_params
-      params.require(:travel).permit(:name)
+      params.require(:travel).permit(:name, :user_id)
     end
 end
