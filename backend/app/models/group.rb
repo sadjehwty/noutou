@@ -1,4 +1,4 @@
 class Group < ApplicationRecord
-  belongs_to :user
   belongs_to :travel
+  has_and_belongs_to_many :users
 end
