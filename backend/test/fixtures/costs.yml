@@ -2,10 +2,10 @@
 
 one:
   name: MyString
-  when: 2017-12-01 07:58:57
-  travel_id: 1
+  when: 2017-12-04 22:10:50
+  travel: one
 
 two:
   name: MyString
-  when: 2017-12-01 07:58:57
-  travel_id: 1
+  when: 2017-12-04 22:10:50
+  travel: two
