@@ -12,7 +12,7 @@ class SharesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create share" do
     assert_difference('Share.count') do
-      post shares_url, params: { share: { user_id: @share.user_id, value: @share.value } }, as: :json
+      post shares_url, params: { share: { cost_id: @share.cost_id, user_id: @share.user_id, value: @share.value } }, as: :json
     end
 
     assert_response 201
@@ -24,7 +24,7 @@ class SharesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update share" do
-    patch share_url(@share), params: { share: { user_id: @share.user_id, value: @share.value } }, as: :json
+    patch share_url(@share), params: { share: { cost_id: @share.cost_id, user_id: @share.user_id, value: @share.value } }, as: :json
     assert_response 200
   end
 

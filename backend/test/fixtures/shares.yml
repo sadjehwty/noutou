@@ -1,9 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  cost: one
   value: 9.99
-  user_id: 1
+  user: one
 
 two:
+  cost: two
   value: 9.99
-  user_id: 1
+  user: two

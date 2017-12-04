@@ -46,6 +46,6 @@ class SharesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def share_params
-      params.require(:share).permit(:value, :user_id)
+      params.require(:share).permit(:cost_id, :value, :user_id)
     end
 end
