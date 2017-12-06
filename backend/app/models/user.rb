@@ -6,4 +6,7 @@ class User < ApplicationRecord
   has_many :travels
   has_and_belongs_to_many :groups
   has_many :shares
+  after_create do |user|
+	  user.friends << user
+  end
 end
