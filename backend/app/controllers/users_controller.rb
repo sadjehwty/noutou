@@ -37,7 +37,15 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
   end
-
+  
+  # PATCH /users/1/merge
+  def merge
+  end
+  
+  # GET /users/search
+  def search
+  end
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
