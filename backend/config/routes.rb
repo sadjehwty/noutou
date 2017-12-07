@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  post 'session/jwt'
+
   resources :shares
   resources :costs
   resources :travels
