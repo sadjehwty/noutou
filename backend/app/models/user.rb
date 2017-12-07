@@ -1,6 +1,5 @@
 class User < ApplicationRecord
-  validates :email, uniqueness: true
-  validates :email, presence: true
+  validates :email, uniqueness: true, presence: true, format: { with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/ }
   has_many :friendships, foreign_key: "user_id", class_name: "Friendship", dependent: :destroy, autosave: true
   has_many :friends, through: :friendships
   has_many :travels, dependent: :destroy
