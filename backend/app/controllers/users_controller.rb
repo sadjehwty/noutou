@@ -44,6 +44,10 @@ class UsersController < ApplicationController
   
   # GET /users/search
   def search
+    cond = "%#{params[:query]}%"
+    @users = User.where("name like ? OR surname like ? OR nickname like ?", cond, cond, cond)
+    
+    render json: @users
   end
   
   private
