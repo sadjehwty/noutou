@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  post 'session/jwt'
+  post 'sessions/jwt'
 
   resources :shares
   resources :costs
