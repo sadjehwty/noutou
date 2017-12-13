@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  scope module: 'api' do
+  namespace :api do
     resources :sessions, only: [:create]
     resources :travels do
       resources :costs, shallow: true do
