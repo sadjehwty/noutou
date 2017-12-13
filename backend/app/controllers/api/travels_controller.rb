@@ -1,4 +1,4 @@
-class TravelsController < ApplicationController
+class Api::TravelsController < ApplicationController
   before_action :set_travel, only: [:show, :update, :destroy]
 
   # GET /travels

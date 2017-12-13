@@ -1,4 +1,4 @@
-class SharesController < ApplicationController
+class Api::SharesController < ApplicationController
   before_action :set_share, only: [:show, :update, :destroy]
 
   # GET /shares

@@ -1,7 +1,7 @@
-class SessionsController < ApplicationController
+class Api::SessionsController < ApplicationController
   skip_before_action :authenticate_request
 
-  def jwt
+  def create
     command = AuthenticateUser.call(params[:email], params[:password])
     if command.success?
       render json: { auth_token: command.result }

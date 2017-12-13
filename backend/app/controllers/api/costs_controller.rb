@@ -1,4 +1,4 @@
-class CostsController < ApplicationController
+class Api::CostsController < ApplicationController
   before_action :set_cost, only: [:show, :update, :destroy]
 
   # GET /costs

@@ -1,12 +1,15 @@
 Rails.application.routes.draw do
-  post 'sessions/jwt'
-
-  resources :shares
-  resources :costs
-  resources :travels
-  resources :users do
-    get 'search', on: :collection
-    patch 'merge', on: :member
+  scope module: 'api' do
+    resources :sessions, only: [:create]
+    resources :travels do
+      resources :costs, shallow: true do
+	resources :shares, shallow: true
+      end
+    end
+    resources :users do
+      get 'search', on: :collection
+      patch 'merge', on: :member
+    end
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
