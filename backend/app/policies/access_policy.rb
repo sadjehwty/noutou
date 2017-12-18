@@ -31,10 +31,18 @@ class AccessPolicy
 
     # The base role with no additional conditions.
     # Applies to every user.
-    #
-    # role :guest do
-    #  can :read, Post
-    #  can :read, Comment
-    # end
+    role :guest do
+     can :read, User
+     can :seach, User
+     can :merge, User do |obj,usr|
+       !obj.merge_code.nil?
+     end
+     can :destroy, User do |obj,usr|
+       obj.friends.contains?(usr) && obj.merge_code.nil?
+     end
+     can :update, User do |obj, usr|
+       obj.id==usr.id || (obj.friends.contains?(usr) && obj.merge_code.nil?)
+     end
+    end
   end
 end
