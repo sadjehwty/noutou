@@ -10,6 +10,7 @@ class AccessPolicy
     # The base role with no additional conditions.
     # Applies to every user.
     role :guest do
+     # User
      can :read, User
      can :seach, User
      can :create, User
@@ -21,6 +22,24 @@ class AccessPolicy
      end
      can :update, User do |obj, usr|
        obj==usr || (obj.friends.contains?(usr) && obj.merge_code.nil?)
+     end
+     # Travel
+     can :read, Travel do |obj,usr|
+       obj.user==usr || obj.group.users.contains?(usr)
+     end
+     can :create, Travel
+     can :update, Travel do |obj,usr|
+       obj.user==usr
+     end
+     can :destroy, Travel do |obj,usr|
+       obj.user==usr && obj.group.users.count == 1
+     end
+     # Group
+     can :read, Group do |obj,usr|
+       obj.users.contains?(usr)
+     end
+     can :update, Group do |obj,usr|
+       obj.travel.user==usr
      end
     end
   end
