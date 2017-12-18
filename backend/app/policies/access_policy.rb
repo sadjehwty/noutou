@@ -41,6 +41,20 @@ class AccessPolicy
      can :update, Group do |obj,usr|
        obj.travel.user==usr
      end
+     # Costs
+     can :read, Cost do |obj,usr|
+       can? :read, obj.travel
+     end
+     can [:update,:destroy,:create], Cost do |obj,usr|
+       can? :update, obj.travel
+     end
+     # Shares
+     can :read, Share do |obj,usr|
+       can? :read, obj.cost
+     end
+     can [:update,:destroy,:create], Share do |obj,usr|
+       can? :update, obj.cost
+     end
     end
   end
 end
