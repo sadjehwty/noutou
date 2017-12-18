@@ -34,6 +34,7 @@ class AccessPolicy
     role :guest do
      can :read, User
      can :seach, User
+     can :create, User
      can :merge, User do |obj,usr|
        !obj.merge_code.nil?
      end
