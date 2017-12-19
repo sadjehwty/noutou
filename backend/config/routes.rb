@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     end
     resources :users do
       get 'search', on: :collection
-      patch 'merge', on: :member
+      match '', to: 'users#merge', via: 'link', on: :member
     end
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
