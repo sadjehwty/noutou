@@ -7,34 +7,54 @@ class AccessPolicy
     #
     # https://github.com/chaps-io/access-granted/blob/master/README.md
     #
-    # Roles inherit from less important roles, so:
-    # - :admin has permissions defined in :member, :guest and himself
-    # - :member has permissions from :guest and himself
-    # - :guest has only its own permissions since it's the first role.
-    #
-    # The most important role should be at the top.
-    # In this case an administrator.
-    #
-    # role :admin, proc { |user| user.admin? } do
-    #   can :destroy, User
-    # end
-
-    # More privileged role, applies to registered users.
-    #
-    # role :member, proc { |user| user.registered? } do
-    #   can :create, Post
-    #   can :create, Comment
-    #   can [:update, :destroy], Post do |post, user|
-    #     post.author == user
-    #   end
-    # end
-
     # The base role with no additional conditions.
     # Applies to every user.
-    #
-    # role :guest do
-    #  can :read, Post
-    #  can :read, Comment
-    # end
+    role :guest do
+      # User
+      can :read, User
+      can :seach, User
+      can :create, User
+      can :merge, User do |obj,usr|
+        !obj.merge_code.nil?
+      end
+      can :destroy, User do |obj,usr|
+        obj.friends.include?(usr) && obj.merge_code.nil?
+      end
+      can :update, User do |obj, usr|
+        obj==usr || (obj.friends.include?(usr) && obj.merge_code.nil?)
+      end
+      # Travel
+      can :read, Travel do |obj,usr|
+        obj.user==usr || obj.group.users.include?(usr)
+      end
+      can :create, Travel
+      can :update, Travel do |obj,usr|
+        obj.user==usr
+      end
+      can :destroy, Travel do |obj,usr|
+        obj.user==usr && obj.group.users.count == 1
+      end
+      # Group
+      can :read, Group do |obj,usr|
+        obj.users.include?(usr)
+      end
+      can :update, Group do |obj,usr|
+        obj.travel.user==usr
+      end
+      # Costs
+      can :read, Cost do |obj,usr|
+        can? :read, obj.travel
+      end
+      can [:update,:destroy,:create], Cost do |obj,usr|
+        can? :update, obj.travel
+      end
+      # Shares
+      can :read, Share do |obj,usr|
+        can? :read, obj.cost
+      end
+      can [:update,:destroy,:create], Share do |obj,usr|
+        can? :update, obj.cost
+      end
+    end
   end
 end

@@ -7,5 +7,7 @@ class Travel < ApplicationRecord
     travel.build_group if travel.group.nil?
     travel.group.users << travel.user
   end
-  validates :user, inclusion: { in: :users }
+  validate do |travel|
+    errors[:user] << 'Owner not in Group' unless travel.group.users.include? travel.user
+  end
 end
