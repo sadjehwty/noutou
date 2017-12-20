@@ -3,6 +3,7 @@ class Api::SharesController < ApplicationController
 
   # GET /shares
   def index
+    authorize! :read, Share
     @shares = Share.all
 
     render json: @shares
@@ -10,11 +11,13 @@ class Api::SharesController < ApplicationController
 
   # GET /shares/1
   def show
+    authorize! :read, @share
     render json: @share
   end
 
   # POST /shares
   def create
+    authorize! :create, Share
     @share = Share.new(share_params)
 
     if @share.save
@@ -26,6 +29,7 @@ class Api::SharesController < ApplicationController
 
   # PATCH/PUT /shares/1
   def update
+    authorize! :update, @share
     if @share.update(share_params)
       render json: @share
     else
@@ -35,6 +39,7 @@ class Api::SharesController < ApplicationController
 
   # DELETE /shares/1
   def destroy
+    authorize! :destroy, @share
     @share.destroy
   end
 

@@ -1,7 +1,10 @@
 class ApplicationController < ActionController::API
   include ActionController::Helpers
   before_action :authenticate_request
-
+  rescue_from "AccessGranted::AccessDenied" do |exception|
+    render json: { error: 'Forbidden' }, status: 403
+  end
+  
   attr_reader :current_user
   helper_method :current_user
 

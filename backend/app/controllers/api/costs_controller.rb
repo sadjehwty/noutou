@@ -3,6 +3,7 @@ class Api::CostsController < ApplicationController
 
   # GET /costs
   def index
+    authorize! :read, Cost
     @costs = Cost.all
 
     render json: @costs
@@ -10,11 +11,13 @@ class Api::CostsController < ApplicationController
 
   # GET /costs/1
   def show
+    authorize! :read, @cost
     render json: @cost
   end
 
   # POST /costs
   def create
+    authorize! :create, Cost
     @cost = Cost.new(cost_params)
 
     if @cost.save
@@ -26,6 +29,7 @@ class Api::CostsController < ApplicationController
 
   # PATCH/PUT /costs/1
   def update
+    authorize! :update, @cost
     if @cost.update(cost_params)
       render json: @cost
     else
@@ -35,6 +39,7 @@ class Api::CostsController < ApplicationController
 
   # DELETE /costs/1
   def destroy
+    authorize! :destroy, @cost
     @cost.destroy
   end
 

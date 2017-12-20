@@ -3,6 +3,7 @@ class Api::TravelsController < ApplicationController
 
   # GET /travels
   def index
+    authorize! :read, Travel
     @travels = Travel.all
 
     render json: @travels
@@ -10,11 +11,13 @@ class Api::TravelsController < ApplicationController
 
   # GET /travels/1
   def show
+    authorize! :read, @travel
     render json: @travel
   end
 
   # POST /travels
   def create
+    authorize! :create, Travel
     @travel = Travel.new(travel_params)
 
     if @travel.save
@@ -26,6 +29,7 @@ class Api::TravelsController < ApplicationController
 
   # PATCH/PUT /travels/1
   def update
+    authorize! :update, @travel
     if @travel.update(travel_params)
       render json: @travel
     else
@@ -35,6 +39,7 @@ class Api::TravelsController < ApplicationController
 
   # DELETE /travels/1
   def destroy
+    authorize! :destroy, @travel
     @travel.destroy
   end
 
