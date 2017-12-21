@@ -4,7 +4,7 @@ class Api::CostsController < ApplicationController
   # GET /costs
   def index
     authorize! :read, Cost
-    @costs = Cost.all
+    @costs = Travel.find(params[:id]).costs
 
     render json: @costs
   end

@@ -4,7 +4,7 @@ class Api::TravelsController < ApplicationController
   # GET /travels
   def index
     authorize! :read, Travel
-    @travels = Travel.all
+    @travels = @current_user.travels
 
     render json: @travels
   end
@@ -19,7 +19,8 @@ class Api::TravelsController < ApplicationController
   def create
     authorize! :create, Travel
     @travel = Travel.new(travel_params)
-
+    @travel.user=@current_user
+    
     if @travel.save
       render json: @travel, status: :created, location: @travel
     else

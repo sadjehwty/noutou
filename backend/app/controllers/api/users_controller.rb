@@ -4,7 +4,7 @@ class Api::UsersController < ApplicationController
   # GET /users
   def index
     authorize! :read, User
-    @users = User.all
+    @users = @current_user.friends
 
     render json: @users
   end
@@ -19,8 +19,9 @@ class Api::UsersController < ApplicationController
   def create
     authorize! :create, @user
     @user = User.new(user_params)
-
-    if @user.save
+    @current_user.friends << @user
+    
+    if @user.save && @current_user.save
       render json: @user, status: :created, location: @user
     else
       render json: @user.errors, status: :unprocessable_entity
@@ -46,6 +47,7 @@ class Api::UsersController < ApplicationController
   # PATCH /users/1/merge
   def merge
     authorize! :merge, @user
+    @user.merge @current_user
   end
   
   # GET /users/search
