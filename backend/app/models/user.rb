@@ -10,4 +10,10 @@ class User < ApplicationRecord
 	  user.friends << user
   end
   has_secure_password
+  def mergable?
+    !merge_code.nil?
+  end
+  def loggable?
+    password_digest.nil?
+  end
 end
