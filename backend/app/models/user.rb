@@ -10,10 +10,36 @@ class User < ApplicationRecord
 	  user.friends << user
   end
   has_secure_password
+  
   def mergable?
     !merge_code.nil?
   end
   def loggable?
     password_digest.nil?
+  end
+  
+  def merge @user
+    User.transaction do
+      Friendship.transaction do
+        Friendship.where('friend_id = ?', self.id).each do |friend|
+          friend.friend_id=@user.id
+          friend.save
+        end
+      end
+      Group.transaction do
+        self.groups.each do |group|
+          group.users.delete self
+          group.users << @user
+          group.save
+        end
+      end
+      Share.transaction do
+        self.shares.each do |share|
+          share.user=@user
+          share.save
+        end
+      end
+      self.destroy
+    end
   end
 end
