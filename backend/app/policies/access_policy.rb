@@ -15,13 +15,13 @@ class AccessPolicy
       can :seach, User
       can :create, User
       can :merge, User do |obj,usr|
-        !obj.merge_code.nil?
+        obj.mergable? && !obj.loggable?
       end
       can :destroy, User do |obj,usr|
-        obj.friends.include?(usr) && obj.merge_code.nil?
+        obj.friends.include?(usr) && !obj.loggable?
       end
       can :update, User do |obj, usr|
-        obj==usr || (obj.friends.include?(usr) && obj.merge_code.nil?)
+        obj==usr || (obj.friends.include?(usr) && !obj.loggable?)
       end
       # Travel
       can :read, Travel do |obj,usr|
