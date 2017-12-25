@@ -22,7 +22,7 @@ class Api::TravelsController < ApplicationController
     @travel.user=@current_user
     
     if @travel.save
-      render json: @travel, status: :created, location: @travel
+      render json: @travel, status: :created
     else
       render json: @travel.errors, status: :unprocessable_entity
     end

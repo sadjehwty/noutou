@@ -21,7 +21,7 @@ class Api::SharesController < ApplicationController
     @share = Share.new(share_params)
 
     if @share.save
-      render json: @share, status: :created, location: @share
+      render json: @share, status: :created
     else
       render json: @share.errors, status: :unprocessable_entity
     end

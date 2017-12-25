@@ -21,7 +21,7 @@ class Api::CostsController < ApplicationController
     @cost = Cost.new(cost_params)
 
     if @cost.save
-      render json: @cost, status: :created, location: @cost
+      render json: @cost, status: :created
     else
       render json: @cost.errors, status: :unprocessable_entity
     end
