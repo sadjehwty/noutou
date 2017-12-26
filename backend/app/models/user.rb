@@ -18,6 +18,11 @@ class User < ApplicationRecord
     password_digest.nil?
   end
   
+  def gen_code
+    o = [('a'..'z'), ('A'..'Z'), ('0'..'9')].map(&:to_a).flatten
+    self.merge_code = (0...128).map { o[rand(o.length)] }.join
+    self.save
+  end
   def merge @user
     User.transaction do
       Friendship.transaction do

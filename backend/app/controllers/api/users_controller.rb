@@ -1,5 +1,5 @@
 class Api::UsersController < ApplicationController
-  before_action :set_user, only: [:show, :update, :destroy, :merge]
+  before_action :set_user, only: [:show, :update, :destroy, :merge, :send]
 
   # GET /users
   def index
@@ -44,6 +44,16 @@ class Api::UsersController < ApplicationController
     @user.destroy
   end
   
+  # PUT /users/1/send
+  def send
+    authorize! :send, @user
+    if @user.gen_code
+      UserMailer.merge_email(@user).deliver_later
+      render json: @user
+    else
+      render json: @user.errors, status: :unprocessable_entity
+    end
+  end
   # PATCH /users/1/merge
   def merge
     authorize! :merge, @user
