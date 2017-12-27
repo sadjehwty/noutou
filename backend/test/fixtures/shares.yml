@@ -2,10 +2,85 @@
 
 one:
   cost: one
-  value: 9.99
+  value: 3.99
   user: one
 
 two:
-  cost: two
-  value: 9.99
+  cost: one
+  value: 3.99
   user: two
+
+three:
+  cost: one
+  value: 4.99
+  user: three
+
+four:
+  cost: two
+  value: 1.99
+  user: one
+
+five:
+  cost: two
+  value: 0.99
+  user: two
+
+six:
+  cost: three
+  value: 4.99
+  user: two
+
+seven:
+  cost: three
+  value: 4.99
+  user: four
+
+eight:
+  cost: three
+  value: 4.99
+  user: five
+
+nine:
+  cost: four
+  value: 4.99
+  user: two
+
+ten:
+  cost: four
+  value: 3.99
+  user: five
+
+eleven:
+  cost: six
+  value: 2.99
+  user: one
+
+twelve:
+  cost: six
+  value: 3.99
+  user: two
+
+thirteen:
+  cost: six
+  value: 4.99
+  user: four
+
+fourteen:
+  cost: five
+  value: 3.99
+  user: one
+
+fiveteen:
+  cost: five
+  value:2.99
+  user: two
+
+sixteen:
+  cost: five
+  value: 4.99
+  user: four
+
+seventeen:
+  cost: five
+  value: 2.99
+  user: five

@@ -1,13 +1,41 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  surname: MyString
-  nickname: MyString
-  email: MyString
+  name: Davide
+  surname: Rizzi
+  nickname: saDjehwty
+  email: sadjehwty@gmail.com
+  password_digest: a
+  merge_code: nil
 
 two:
-  name: MyString
-  surname: MyString
-  nickname: MyString
-  email: MyString
+  name: Alessandro
+  surname: Pasini
+  nickname: Paso
+  email: paso82@gmail.com
+  password_digest: a
+  merge_code: nil
+
+three:
+  name: Claudia
+  surname: Pasini
+  nickname: Kiriko
+  email: strega.kiriko@gmail.com
+  password_digest: a
+  merge_code: nil
+
+four:
+  name: Daniele
+  surname: Tiles
+  nickname: Last
+  email: last.hope@gmail.com
+  password_digest: a
+  merge_code: nil
+
+five:
+  name: Sara
+  surname: Lobosco
+  nickname: Teresa
+  email: sara.teresa@gmail.com
+  password_digest: a
+  merge_code: nil

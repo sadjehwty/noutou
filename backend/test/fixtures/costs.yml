@@ -1,11 +1,31 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
+  name: Viaggio
   when: 2017-12-04 22:10:50
   travel: one
 
 two:
-  name: MyString
+  name: Cena
+  when: 2017-12-04 22:10:51
+  travel: one
+
+three:
+  name: Viaggio
   when: 2017-12-04 22:10:50
   travel: two
+
+four:
+  name: Tempio
+  when: 2017-12-04 22:10:51
+  travel: two
+
+five:
+  name: Noleggio automobile
+  when: 2017-12-04 22:10:50
+  travel: three
+
+six:
+  name: Cena
+  when: 2017-12-04 22:10:51
+  travel: three
