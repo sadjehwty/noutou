@@ -23,24 +23,24 @@ class User < ApplicationRecord
     self.merge_code = (0...128).map { o[rand(o.length)] }.join
     self.save
   end
-  def merge @user
+  def merge user
     User.transaction do
       Friendship.transaction do
         Friendship.where('friend_id = ?', self.id).each do |friend|
-          friend.friend_id=@user.id
+          friend.friend_id=user.id
           friend.save
         end
       end
       Group.transaction do
         self.groups.each do |group|
           group.users.delete self
-          group.users << @user
+          group.users << user
           group.save
         end
       end
       Share.transaction do
         self.shares.each do |share|
-          share.user=@user
+          share.user=user
           share.save
         end
       end
