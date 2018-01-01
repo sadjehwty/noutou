@@ -13,7 +13,7 @@ class AuthenticateApiRequest
   attr_reader :headers
 
   def user
-    @user ||= User.find(decoded_auth_token[:user_id]) if decoded_auth_token
+    @user ||= User.joins(:sessions).where('uid = ? and provider = ? and sessions.oauth_token = ?',decoded_auth_token[:uid], decoded_auth_token[:prv],decoded_auth_token[:tkn]).first if decoded_auth_token
     @user || errors.add(:token, 'Invalid token') && nil
   end
 
