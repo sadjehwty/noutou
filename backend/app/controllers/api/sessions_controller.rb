@@ -1,41 +1,24 @@
 class SessionsController < ApplicationController
-  before_action :set_session, only: [:show, :update, :destroy]
-
-  # GET /sessions
-  def index
-    @sessions = Session.all
-
-    render json: @sessions
-  end
-
-  # GET /sessions/1
-  def show
-    render json: @session
-  end
+  skip_before_action :authenticate_request, except: :destroy
+  before_action :set_session, only: :destroy
 
   # POST /sessions
   def create
-    @session = Session.new(session_params)
-
-    if @session.save
-      render json: @session, status: :created, location: @session
+    user = User.authenticate request.env['omniauth.auth']
+    if user && (command = AuthenticateUser.call(user.uid, user.provider)) && command.success?
+      render json: { auth_token: command.result }
     else
-      render json: @session.errors, status: :unprocessable_entity
-    end
-  end
-
-  # PATCH/PUT /sessions/1
-  def update
-    if @session.update(session_params)
-      render json: @session
-    else
-      render json: @session.errors, status: :unprocessable_entity
+      render json: { error: command.errors }, status: :unauthorized
     end
   end
 
   # DELETE /sessions/1
   def destroy
     @session.destroy
+=begin
+    @current_user.oauth_token = nil
+    @current_user.save
+=end
   end
 
   private
