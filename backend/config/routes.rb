@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   namespace :api do
-    resources :sessions, only: [:create]
+    resources :sessions, only: [:create,:destroy]
     resources :travels do
       resources :costs, shallow: true do
 	resources :shares, shallow: true

@@ -1,9 +1,38 @@
 require 'test_helper'
 
 class SessionsControllerTest < ActionDispatch::IntegrationTest
-  test "should create session" do
-    get users_url, as: :json
+  setup do
+    @session = sessions(:one)
+  end
+
+  test "should get index" do
+    get sessions_url, as: :json
     assert_response :success
   end
 
+  test "should create session" do
+    assert_difference('Session.count') do
+      post sessions_url, params: { session: { oauth_expires_at: @session.oauth_expires_at, oauth_token: @session.oauth_token, user_id: @session.user_id } }, as: :json
+    end
+
+    assert_response 201
+  end
+
+  test "should show session" do
+    get session_url(@session), as: :json
+    assert_response :success
+  end
+
+  test "should update session" do
+    patch session_url(@session), params: { session: { oauth_expires_at: @session.oauth_expires_at, oauth_token: @session.oauth_token, user_id: @session.user_id } }, as: :json
+    assert_response 200
+  end
+
+  test "should destroy session" do
+    assert_difference('Session.count', -1) do
+      delete session_url(@session), as: :json
+    end
+
+    assert_response 204
+  end
 end

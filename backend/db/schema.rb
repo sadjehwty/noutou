@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171218115339) do
+ActiveRecord::Schema.define(version: 20180101105705) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,15 @@ ActiveRecord::Schema.define(version: 20171218115339) do
     t.bigint "user_id", null: false
   end
 
+  create_table "sessions", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "oauth_token"
+    t.datetime "oauth_expires_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_sessions_on_user_id"
+  end
+
   create_table "shares", force: :cascade do |t|
     t.bigint "cost_id"
     t.decimal "value"
@@ -70,13 +79,15 @@ ActiveRecord::Schema.define(version: 20171218115339) do
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "password_digest"
     t.string "merge_code"
+    t.string "uid"
+    t.string "provider"
   end
 
   add_foreign_key "costs", "travels"
   add_foreign_key "friendships", "users"
   add_foreign_key "groups", "travels"
+  add_foreign_key "sessions", "users"
   add_foreign_key "shares", "costs"
   add_foreign_key "shares", "users"
   add_foreign_key "travels", "users"
