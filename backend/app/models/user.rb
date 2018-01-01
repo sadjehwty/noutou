@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_and_belongs_to_many :groups
   has_many :shares, dependent: :destroy
   has_many :travels, through: :groups
+  has_many :sessions, dependent: :destroy
   after_create do |user|
 	  user.friends << user
   end

@@ -1,3 +1,5 @@
 class Session < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, :autosave => true
+  def to_jwt
+  end
 end
