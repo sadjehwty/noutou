@@ -9,7 +9,6 @@ class User < ApplicationRecord
   after_create do |user|
 	  user.friends << user
   end
-  has_secure_password
   
   def mergable?
     !merge_code.nil?
