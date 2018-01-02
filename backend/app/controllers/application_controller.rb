@@ -5,11 +5,13 @@ class ApplicationController < ActionController::API
   end
   
   attr_reader :current_user
+  attr_reader :current_session
 
   private
   def authenticate_request
     TokenCleanupJob.perform_later
-    @current_user = AuthenticateApiRequest.call(request.headers).result
+    @current_session ||= Session.from_jwt(request.headers)
+    @current_user ||= @current_session.user
     render json: { error: 'Not Authorized' }, status: 401 unless @current_user
   end
 end
