@@ -8,6 +8,7 @@ class ApplicationController < ActionController::API
 
   private
   def authenticate_request
+    TokenCleanupJob.perform_later
     @current_user = AuthenticateApiRequest.call(request.headers).result
     render json: { error: 'Not Authorized' }, status: 401 unless @current_user
   end
