@@ -41,8 +41,10 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'jwt'
 gem 'simple_command'
+gem 'omniauth', '~> 1.7'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-facebook'
+gem 'omniauth-linkedin-oauth2'
 
 gem 'access-granted', '~> 1.1.0'
 
