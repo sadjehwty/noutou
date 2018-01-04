@@ -1,4 +1,4 @@
-class SessionsController < ApplicationController
+class Api::SessionsController < ApplicationController
   skip_before_action :authenticate_request, except: :destroy
 
   # GET /auth/:provider/callback
