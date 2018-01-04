@@ -1,14 +1,18 @@
 class SessionsController < ApplicationController
   skip_before_action :authenticate_request, except: :destroy
 
-  # POST /sessions
-  def create
+  # GET /auth/:provider/callback
+  def success
     session = Session.authenticate request.env['omniauth.auth']
     if session && session.to_jwt
       render json: { auth_token: session.to_jwt }
     else
       render json: { error: command.errors }, status: :unauthorized
     end
+  end
+  # GET /auth/failure
+  def failure
+    render json: { error: 'Not Authorized' }, status: 401
   end
 
   # DELETE /sessions/1

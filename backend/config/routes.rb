@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
-  get 'auth/:provider/callback', to: 'sessions#create'
-  get 'auth/failure', to: redirect('/')
+  get 'auth/:provider/callback', to: 'api::sessions#success'
+  get 'auth/failure', to: 'api::sessions#failure'
   namespace :api do
-    resources :sessions, only: [:create,:destroy]
+    resources :sessions, only: [:destroy]
     resources :travels do
       resources :costs, shallow: true do
-	resources :shares, shallow: true
+	      resources :shares, shallow: true
       end
     end
     resources :users do
