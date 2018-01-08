@@ -4,6 +4,7 @@ import { of } from 'rxjs/observable/of';
 import { catchError, map, tap } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MessageService } from './message.service';
+import { Login } from '../classes/login';
 
 @Injectable()
 export class AbstractService {
@@ -14,8 +15,19 @@ export class AbstractService {
 
   constructor( private http: HttpClient, private messageService: MessageService) { }
 
+  login(url){
+    return this.http.get<Login>(this.domain+url).pipe(
+      tap(setToken(login)),
+      catchError(this.handleError('login: '+url, []))
+    );
+  }
+  
+  private setToken(login){
+    this.httpOptions.headers.append('Authorization','bearer '+login.auth_token);
+    this.log(`login`);
+  }
   private log(message: string) {
-    this.messageService.add('HeroService: ' + message);
+    this.messageService.add('AbstractService: ' + message);
   }
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
@@ -29,11 +41,4 @@ export class AbstractService {
       return of(result as T);
     };
   }
-/*
-  getHeroes(): Observable<Hero[]> {
-    // Todo: send the message _after_ fetching the heroes
-    this.messageService.add('HeroService: fetched heroes');
-    return of(HEROES);
-  }
-*/
 }
