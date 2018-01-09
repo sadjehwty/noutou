@@ -1,1 +1,31 @@
 /* You can add global styles to this file, and also import other style files */
+.supersonic-navbar-mock {
+  background-color: #ff1493 !important;
+  text-align: center;
+  font-weight: 600;
+}
+.button.button-positive{
+  background: #ff1493;
+  border: #000000;
+  color: #000000;
+}
+.button-block.button-negative{
+  background: #000000;
+  border: #ff1493;
+  color: #ff1493;
+}
+span.new{
+  position: fixed;
+  right: 10px;
+  bottom: 10px;
+  border-radius: 40px;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  background-color: #ff1493;
+  box-shadow: 4px 4px 4px #000;
+  font-size: 2em;
+  display: flex;
+  justify-content: center; /* align horizontal */
+  align-items: center; /* align vertical */
+}
