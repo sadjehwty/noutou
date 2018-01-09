@@ -1,3 +1,17 @@
-<p>
-  travels works!
-</p>
+<h2>Travels</h2>
+<div>
+  <label>Travel name:
+    <input #travelName />
+  </label>
+  <button (click)="addTravel(travelName.value); travelName.value=''">
+    add
+  </button>
+</div>
+<ul class="travels">
+  <li *ngFor="let travel of travels">
+    <a routerLink="/travels/{{travel.id}}">
+      <span class="badge">{{travel.id}}</span> {{travel.name}}
+    </a>
+    <button class="delete" title="delete travel" (click)="deleteTravel(travel)">x</button>
+  </li>
+</ul>
