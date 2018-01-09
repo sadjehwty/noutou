@@ -8,7 +8,7 @@ import { Login } from '../classes/login';
 
 @Injectable()
 export class AbstractService {
-  private domain = 'http://jwt.macrobug.dev:3000';
+  private domain = 'http://jwt.macrobug.dev:3000/api';
   private httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
