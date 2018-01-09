@@ -1,4 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
+import { of } from 'rxjs/observable/of';
+import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
+
+import { User } from '../classes/user';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-user-search',
@@ -7,9 +14,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserSearchComponent implements OnInit {
 
-  constructor() { }
-
+  users$: Observable<User[]>;
+  private searchTerms = new Subject<string>();
+  
+  constructor(private userService: UserService) {}
+  
   ngOnInit() {
+    this.users$ = this.searchTerms.pipe(
+      debounceTime(300),
+      distinctUntilChanged(),
+      switchMap((term: string) => this.userService.searchUsers(term)),
+    );
   }
-
+  
+  search(term: string): void {
+    this.searchTerms.next(term);
+  }
 }
