@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { MessageService } from './services/message.service';
@@ -18,6 +19,7 @@ import { CostsComponent } from './costs/costs.component';
 import { CostDetailComponent } from './cost-detail/cost-detail.component';
 import { SharesComponent } from './shares/shares.component';
 import { ShareDetailComponent } from './share-detail/share-detail.component';
+import { MessagesComponent } from './messages/messages.component';
 import { AppRoutingModule } from './/app-routing.module';
 
 
@@ -32,10 +34,13 @@ import { AppRoutingModule } from './/app-routing.module';
     CostsComponent,
     CostDetailComponent,
     SharesComponent,
-    ShareDetailComponent
+    ShareDetailComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    HttpClientModule,
     AppRoutingModule
   ],
   providers: [MessageService, AbstractService, UserService, TravelService, CostService, ShareService],
