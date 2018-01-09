@@ -64,7 +64,11 @@ class Api::UsersController < ApplicationController
   def search
     authorize! :read, User
     cond = "%#{params[:query]}%"
-    @users = User.where("(name like ? OR surname like ? OR nickname like ?) and id <> ?", cond, cond, cond, @current_user.id)
+    if params[:share_id]
+      @users = Share.find(params[:share_id]).travel.group.users.where("(name like ? OR surname like ? OR nickname like ?) and id <> ?", cond, cond, cond, @current_user.id)
+    else
+      @users = User.where("(name like ? OR surname like ? OR nickname like ?) and id <> ?", cond, cond, cond, @current_user.id)
+    end
     
     render json: @users
   end
