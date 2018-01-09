@@ -5,6 +5,10 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { MessageService } from './services/message.service';
 import { AbstractService } from './services/abstract.service';
+import { UserService } from './services/user.service';
+import { TravelService } from './services/travel.service';
+import { CostService } from './services/cost.service';
+import { ShareService } from './services/share.service';
 import { UsersComponent } from './users/users.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { UserSearchComponent } from './user-search/user-search.component';
@@ -15,10 +19,6 @@ import { CostDetailComponent } from './cost-detail/cost-detail.component';
 import { SharesComponent } from './shares/shares.component';
 import { ShareDetailComponent } from './share-detail/share-detail.component';
 import { AppRoutingModule } from './/app-routing.module';
-import { UserService } from './user.service';
-import { TravelService } from './travel.service';
-import { CostService } from './cost.service';
-import { ShareService } from './share.service';
 
 
 @NgModule({
