@@ -15,6 +15,10 @@ import { CostDetailComponent } from './cost-detail/cost-detail.component';
 import { SharesComponent } from './shares/shares.component';
 import { ShareDetailComponent } from './share-detail/share-detail.component';
 import { AppRoutingModule } from './/app-routing.module';
+import { UserService } from './user.service';
+import { TravelService } from './travel.service';
+import { CostService } from './cost.service';
+import { ShareService } from './share.service';
 
 
 @NgModule({
@@ -34,7 +38,7 @@ import { AppRoutingModule } from './/app-routing.module';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [MessageService, AbstractService],
+  providers: [MessageService, AbstractService, UserService, TravelService, CostService, ShareService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
