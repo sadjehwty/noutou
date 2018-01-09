@@ -14,7 +14,7 @@ export class CostService extends AbstractService{
   
   constructor( protected http: HttpClient, protected messageService: MessageService) { super(http, messageService); }
   
-  getCosts(): Observable<Cost[]> {
+  getCosts(id: number): Observable<Cost[]> {
     return this.http.get<Cost[]>(this.getDomain()+this.costsUrl).pipe(
       tap(costs => this.log(`fetched costs`)),
                                                                    catchError(this.handleError('getCosts', []))

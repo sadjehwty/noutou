@@ -14,7 +14,7 @@ export class ShareService extends AbstractService{
   
   constructor( protected http: HttpClient, protected messageService: MessageService) { super(http, messageService); }
   
-  getShares(): Observable<Share[]> {
+  getShares(id: number): Observable<Share[]> {
     return this.http.get<Share[]>(this.getDomain()+this.sharesUrl).pipe(
       tap(shares => this.log(`fetched shares`)),
                                                                  catchError(this.handleError('getShares', []))
