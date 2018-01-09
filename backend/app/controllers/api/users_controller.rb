@@ -45,7 +45,7 @@ class Api::UsersController < ApplicationController
   end
   
   # PUT /users/1/send
-  def send
+  def tomerge
     authorize! :send, @user
     if @user.gen_code
       UserMailer.merge_email(@user).deliver_later
