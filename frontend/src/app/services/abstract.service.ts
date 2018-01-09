@@ -13,23 +13,29 @@ export class AbstractService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
-  constructor( private http: HttpClient, private messageService: MessageService) { }
-
+  constructor( protected http: HttpClient, protected messageService: MessageService) { }
+  
+  protected getHeader(){
+    return this.httpOptions;
+  }
+  protected getDomain(){
+    return this.domain;
+  }
+  
   login(url){
     return this.http.get<Login>(this.domain+url).pipe(
-      tap(setToken(login)),
+      tap(login => {
+        this.getHeader().headers.append('Authorization','bearer '+login.auth_token);
+        this.log(`login`);
+      }),
       catchError(this.handleError('login: '+url, []))
     );
   }
   
-  private setToken(login){
-    this.httpOptions.headers.append('Authorization','bearer '+login.auth_token);
-    this.log(`login`);
-  }
-  private log(message: string) {
+  protected log(message: string) {
     this.messageService.add('AbstractService: ' + message);
   }
-  private handleError<T> (operation = 'operation', result?: T) {
+  protected handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       // TODO: send the error to remote logging infrastructure
       console.error(error); // log to console instead
