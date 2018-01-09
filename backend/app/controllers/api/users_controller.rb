@@ -4,7 +4,7 @@ class Api::UsersController < ApplicationController
   # GET /users
   def index
     authorize! :read, User
-    @users = @current_user.friends
+    @users = @current_user.friends.where('users.id <> ?', @current_user.id)
 
     render json: @users
   end
@@ -64,7 +64,7 @@ class Api::UsersController < ApplicationController
   def search
     authorize! :read, User
     cond = "%#{params[:query]}%"
-    @users = User.where("name like ? OR surname like ? OR nickname like ?", cond, cond, cond)
+    @users = User.where("(name like ? OR surname like ? OR nickname like ?) and id <> ?", cond, cond, cond, @current_user.id)
     
     render json: @users
   end
