@@ -10,7 +10,7 @@ import { Cost } from '../classes/cost';
 @Injectable()
 export class CostService extends AbstractService{
 
-  private costsUrl = '/api/costs';  // URL to web api
+  private costsUrl = '/costs';  // URL to web api
   
   constructor( protected http: HttpClient, protected messageService: MessageService) { super(http, messageService); }
   

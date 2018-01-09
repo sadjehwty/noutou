@@ -10,7 +10,7 @@ import { Share } from '../classes/share';
 @Injectable()
 export class ShareService extends AbstractService{
 
-  private sharesUrl = '/api/shares';  // URL to web api
+  private sharesUrl = '/shares';  // URL to web api
   
   constructor( protected http: HttpClient, protected messageService: MessageService) { super(http, messageService); }
   

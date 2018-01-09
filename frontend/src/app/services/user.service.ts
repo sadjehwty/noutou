@@ -10,7 +10,7 @@ import { User } from '../classes/user';
 @Injectable()
 export class UserService extends AbstractService{
 
-  private usersUrl = '/api/users';  // URL to web api
+  private usersUrl = '/users';  // URL to web api
   
   constructor( protected http: HttpClient, protected messageService: MessageService) { super(http, messageService); }
   
