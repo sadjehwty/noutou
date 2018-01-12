@@ -17,7 +17,7 @@ class Api::UsersController < ApplicationController
 
   # POST /users
   def create
-    authorize! :create, @user
+    authorize! :create, User
     @user = User.new(user_params)
     @current_user.friends << @user
     
