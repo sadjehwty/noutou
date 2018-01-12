@@ -1,9 +1,18 @@
 <h2>Users</h2>
 <div>
   <label>User name:
-    <input #userName />
+    <input [(ngModel)]="newUser.name" placeholder="name">
   </label>
-  <button (click)="addUser(userName.value); userName.value=''">
+  <label>User nickname:
+    <input [(ngModel)]="newUser.nickname" placeholder="nickname">
+  </label>
+  <label>User surname:
+    <input [(ngModel)]="newUser.surname" placeholder="surname">
+  </label>
+  <label>User email:
+    <input [(ngModel)]="newUser.email" placeholder="email">
+  </label>
+  <button (click)="addUser(newUser)">
     add
   </button>
 </div>
