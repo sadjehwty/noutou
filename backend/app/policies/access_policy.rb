@@ -21,10 +21,10 @@ class AccessPolicy
         obj.mergable? && !obj.loggable?
       end
       can :destroy, User do |obj,usr|
-        obj.friends.include?(usr) && !obj.loggable?
+        usr.friends.include?(obj) && !obj.loggable?
       end
       can :update, User do |obj, usr|
-        obj==usr || (obj.friends.include?(usr) && !obj.loggable?)
+        obj==usr || (usr.friends.include?(obj) && !obj.loggable?)
       end
       # Travel
       can :read, Travel do |obj,usr|
