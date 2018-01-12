@@ -14,7 +14,7 @@ class AccessPolicy
       can :read, User
       can :seach, User
       can :create, User
-      can :send, User do |obj,usr|
+      can :sendmail, User do |obj,usr|
         obj.mergable?
       end
       can :merge, User do |obj,usr|

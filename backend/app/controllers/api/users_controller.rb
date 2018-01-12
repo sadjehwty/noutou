@@ -44,9 +44,9 @@ class Api::UsersController < ApplicationController
     @user.destroy
   end
   
-  # PUT /users/1/send
-  def tomerge
-    authorize! :send, @user
+  # PUT /users/1/sendmail
+  def sendmail
+    authorize! :sendmail, @user
     if @user.gen_code
       UserMailer.merge_email(@user).deliver_later
       render json: @user
