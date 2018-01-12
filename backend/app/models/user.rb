@@ -17,7 +17,7 @@ class User < ApplicationRecord
     !merge_code.nil?
   end
   def loggable?
-    password_digest.nil?
+    !uid.nil?
   end
   
   def gen_code
