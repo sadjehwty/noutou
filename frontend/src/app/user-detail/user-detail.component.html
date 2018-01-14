@@ -1,3 +1,25 @@
-<p>
-  user-detail works!
-</p>
+<div *ngIf="user">
+  <h2>{{ user.name | uppercase }} <span *ngIf="user.nickname!=''">"{{ user.nickname | uppercase }}" </span>{{ user.surname | uppercase }}</h2>
+  <div>
+    <label>name:
+      <input [(ngModel)]="user.name" placeholder="name">
+    </label>
+  </div>
+  <div>
+    <label>nickname:
+      <input [(ngModel)]="user.nickname" placeholder="nickname">
+    </label>
+  </div>
+  <div>
+    <label>surname:
+      <input [(ngModel)]="user.surname" placeholder="surname">
+    </label>
+  </div>
+  <div>
+    <label>email:
+      <input [(ngModel)]="user.email" placeholder="email">
+    </label>
+  </div>
+  <button (click)="goBack()">go back</button>
+  <button (click)="save()">save</button>
+</div>
