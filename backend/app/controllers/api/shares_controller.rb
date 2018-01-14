@@ -4,7 +4,7 @@ class Api::SharesController < ApplicationController
   # GET /shares
   def index
     authorize! :read, Share
-    @shares = Cost.find(params[:id]).shares
+    @shares = Cost.find(params[:costs_id]).shares
 
     render json: @shares
   end
