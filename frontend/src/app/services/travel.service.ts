@@ -31,7 +31,7 @@ export class TravelService extends AbstractService{
   
   updateTravel(travel: Travel): Observable<any> {
     const url = `${this.travelsUrl}/${travel.id}`;
-    return this.http.put(url, travel, this.getHeader()).pipe(
+    return this.http.put(this.getDomain()+url, travel, this.getHeader()).pipe(
       tap(_ => this.log(`updated travel id=${travel.id}`)),
                                                            catchError(this.handleError<any>('updateTravel'))
     );

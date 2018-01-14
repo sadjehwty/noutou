@@ -31,7 +31,7 @@ export class UserService extends AbstractService{
   
   updateUser(user: User): Observable<any> {
     const url = `${this.usersUrl}/${user.id}`;
-    return this.http.put(url, user, this.getHeader()).pipe(
+    return this.http.put(this.getDomain()+url, user, this.getHeader()).pipe(
       tap(_ => this.log(`updated user id=${user.id}`)),
       catchError(this.handleError<any>('updateUser'))
     );

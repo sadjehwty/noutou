@@ -31,7 +31,7 @@ export class CostService extends AbstractService{
   
   updateCost(cost: Cost): Observable<any> {
     const url = `${this.costsUrl}/${cost.id}`;
-    return this.http.put(url, cost, this.getHeader()).pipe(
+    return this.http.put(this.getDomain()+url, cost, this.getHeader()).pipe(
       tap(_ => this.log(`updated cost id=${cost.id}`)),
       catchError(this.handleError<any>('updateCost'))
     );

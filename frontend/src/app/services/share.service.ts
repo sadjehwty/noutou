@@ -31,7 +31,7 @@ export class ShareService extends AbstractService{
   
   updateShare(share: Share): Observable<any> {
     const url = `${this.sharesUrl}/${share.id}`;
-    return this.http.put(url, share, this.getHeader()).pipe(
+    return this.http.put(this.getDomain()+url, share, this.getHeader()).pipe(
       tap(_ => this.log(`updated share id=${share.id}`)),
                                                            catchError(this.handleError<any>('updateShare'))
     );
