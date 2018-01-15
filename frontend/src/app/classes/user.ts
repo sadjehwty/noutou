@@ -1,3 +1,4 @@
+import { Friendship } from './friendship';
 export class User { 
   id: number;
   name: string;
@@ -5,4 +6,5 @@ export class User {
   surname: string;
   email: string;
   merge_code: string;
+  friendships: Friendship[];
 }
