@@ -11,11 +11,13 @@ import { Cost } from '../classes/cost';
 export class CostService extends AbstractService{
 
   private costsUrl = '/costs';  // URL to web api
+  private parentUrl = '/travels';
   
   constructor( protected http: HttpClient, protected messageService: MessageService) { super(http, messageService); }
   
   getCosts(id: number): Observable<Cost[]> {
-    return this.http.get<Cost[]>(this.getDomain()+this.costsUrl).pipe(
+    const url = `${this.parentUrl}/${id}${this.costsUrl}`;
+    return this.http.get<Cost[]>(this.getDomain()+url).pipe(
       tap(costs => this.log(`fetched costs`)),
                                                                    catchError(this.handleError('getCosts', []))
     );

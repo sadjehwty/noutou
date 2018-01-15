@@ -4,7 +4,6 @@ import { Cost } from '../classes/cost';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { TravelService } from '../services/travel.service';
-import { CostService } from '../services/cost.service';
 
 @Component({
   selector: 'app-travel-detail',
@@ -14,12 +13,10 @@ import { CostService } from '../services/cost.service';
 export class TravelDetailComponent implements OnInit {
 
   @Input() travel: Travel;
-  costs: Cost[];
   
   constructor(
     private route: ActivatedRoute,
     private travelService: TravelService,
-    private costService: CostService,
     private location: Location) { }      
   
   ngOnInit() {
@@ -29,7 +26,6 @@ export class TravelDetailComponent implements OnInit {
   getTravel(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.travelService.getTravel(id).subscribe(travel => this.travel = travel);
-    this.costService.getCosts(id).subscribe(costs => this.costs = costs);
   }
   
   goBack(): void {

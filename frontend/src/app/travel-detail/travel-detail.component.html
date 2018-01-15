@@ -1,3 +1,11 @@
-<p>
-  travel-detail works!
-</p>
+<div *ngIf="travel">
+  <h2>{{ travel.name | uppercase }}</h2>
+  <div>
+    <label>name:
+      <input [(ngModel)]="travel.name" placeholder="name">
+    </label>
+  </div>
+  <app-costs [travel]="travel"></app-costs>
+  <button (click)="goBack()">go back</button>
+  <button (click)="save()">save</button>
+</div>
