@@ -11,4 +11,8 @@ class Travel < ApplicationRecord
   validate do |travel|
     errors[:user] << 'Owner not in Group' unless travel.group.users.include? travel.user
   end
+  
+  def as_json(options={})
+    super(include: {group: {include: :users}})
+  end
 end

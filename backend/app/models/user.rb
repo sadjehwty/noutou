@@ -20,6 +20,10 @@ class User < ApplicationRecord
     !uid.nil?
   end
   
+  def as_json(options={})
+    super(include: {friendships: {include: :friend}})
+  end
+  
   def gen_code
     o = [('a'..'z'), ('A'..'Z'), ('0'..'9')].map(&:to_a).flatten
     self.merge_code = (0...128).map { o[rand(o.length)] }.join
