@@ -11,11 +11,13 @@ import { Share } from '../classes/share';
 export class ShareService extends AbstractService{
 
   private sharesUrl = '/shares';  // URL to web api
+  private parentUrl = '/costs';
   
   constructor( protected http: HttpClient, protected messageService: MessageService) { super(http, messageService); }
   
   getShares(id: number): Observable<Share[]> {
-    return this.http.get<Share[]>(this.getDomain()+this.sharesUrl).pipe(
+    const url = `${this.parentUrl}/${id}${this.sharesUrl}`;
+    return this.http.get<Share[]>(this.getDomain()+url).pipe(
       tap(shares => this.log(`fetched shares`)),
                                                                  catchError(this.handleError('getShares', []))
     );
