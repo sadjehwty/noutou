@@ -1,3 +1,20 @@
-<p>
-  shares works!
-</p>
+<h2>Shares</h2>
+<div>
+  <label>Share user:
+    <input [(ngModel)]="newShare.user_id" placeholder="user">
+  </label>
+  <label>Share amount:
+    <input [(ngModel)]="newShare.value" placeholder="value">
+  </label>
+  <button (click)="addShare()">
+    add
+  </button>
+</div>
+<ul class="shares">
+  <li *ngFor="let share of shares">
+    <a routerLink="/shares/{{share.id}}">
+      <span class="badge">{{share.id}}</span> {{share.user}} {{share.value}}
+    </a>
+    <button class="delete" title="delete share" (click)="deleteCost(share)">x</button>
+  </li>
+</ul>
