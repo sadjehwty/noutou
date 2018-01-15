@@ -1,9 +1,9 @@
 <h2>Travels</h2>
 <div>
   <label>Travel name:
-    <input #travelName />
+    <input [(ngModel)]="newTravel.name" placeholder="name">
   </label>
-  <button (click)="addTravel(travelName.value); travelName.value=''">
+  <button (click)="addTravel()">
     add
   </button>
 </div>

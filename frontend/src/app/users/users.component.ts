@@ -23,14 +23,14 @@ export class UsersComponent implements OnInit {
     this.userService.getUsers().subscribe(users => this.users = users);
   }
   
-  addUser(user: User): void {
-    user.name = user.name.trim();
-    user.surname = user.surname.trim();
-    user.nickname = user.nickname.trim();
-    user.email = user.email.trim();
-    this.userService.addUser(user).subscribe(user => { 
+  addUser(): void {
+    this.newUser.name = this.newUser.name.trim();
+    this.newUser.surname = this.newUser.surname.trim();
+    this.newUser.nickname = this.newUser.nickname.trim();
+    this.newUser.email = this.newUser.email.trim();
+    this.userService.addUser(this.newUser).subscribe(user => { 
         this.users.push(user);
-        this.newUser.name = this.newUser.surname = this.newUser.nickname = this.newUser.email = '';
+        this.newUser = new User();
     });
   }
   
