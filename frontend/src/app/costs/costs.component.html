@@ -1,3 +1,20 @@
-<p>
-  costs works!
-</p>
+<h2>Costs</h2>
+<div>
+  <label>Cost name:
+    <input [(ngModel)]="newCost.name" placeholder="name">
+  </label>
+  <label>Cost when:
+    <input [(ngModel)]="newCost.when" placeholder="when">
+  </label>
+  <button (click)="addUser()">
+    add
+  </button>
+</div>
+<ul class="costs">
+  <li *ngFor="let cost of costs">
+    <a routerLink="/costs/{{cost.id}}">
+      <span class="badge">{{cost.id}}</span> {{cost.name}} {{cost.when}}
+    </a>
+    <button class="delete" title="delete cost" (click)="deleteCost(cost)">x</button>
+  </li>
+</ul>
