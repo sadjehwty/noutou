@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Travel } from '../classes/travel';
-import { Cost } from '../classes/cost';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { TravelService } from '../services/travel.service';

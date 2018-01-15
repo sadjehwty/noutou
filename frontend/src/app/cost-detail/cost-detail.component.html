@@ -1,3 +1,14 @@
-<p>
-  cost-detail works!
-</p>
+<div *ngIf="cost">
+  <h2>{{ cost.name | uppercase }}</h2>
+  <div>
+    <label>name:
+      <input [(ngModel)]="cost.name" placeholder="cost">
+    </label>
+    <label>when:
+      <input [(ngModel)]="cost.when" placeholder="when">
+    </label>
+  </div>
+  <app-shares [cost]="cost"></app-shares>
+  <button (click)="goBack()">go back</button>
+  <button (click)="save()">save</button>
+</div>

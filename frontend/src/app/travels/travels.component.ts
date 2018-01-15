@@ -10,21 +10,26 @@ import { TravelService } from '../services/travel.service';
 export class TravelsComponent implements OnInit {
   
   travels: Travel[];
+  newTravel: Travel;
 
   constructor(private travelService: TravelService) { }
 
   ngOnInit() {
     this.getTravels();
+    this.newTravel=new Travel();
   }
   
   getTravels(): void {
     this.travelService.getTravels().subscribe(travels => this.travels = travels);
   }
   
-  addTravel(name: string): void {
-    name = name.trim();
-    if (!name) { return; }
-    this.travelService.addTravel({ name } as Travel).subscribe(travel => { this.travels.push(travel);});
+  addTravel(): void {
+    this.newTravel.name = this.newTravel.name.trim();
+    if (!this.newTravel.name) { return; }
+    this.travelService.addTravel(this.newTravel).subscribe(travel => { 
+        this.travels.push(travel);
+        this.newTravel=new Travel();
+    });
   }
   
   deleteTravel(travel: Travel): void {
