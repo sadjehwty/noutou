@@ -1,3 +1,13 @@
-<p>
-  share-detail works!
-</p>
+<div *ngIf="share">
+  <h2>{{ share.value }}</h2>
+  <div>
+    <label>user:
+      <input [(ngModel)]="share.user_id" placeholder="user">
+    </label>
+    <label>amount:
+      <input [(ngModel)]="share.value" placeholder="value">
+    </label>
+  </div>
+  <button (click)="goBack()">go back</button>
+  <button (click)="save()">save</button>
+</div>
