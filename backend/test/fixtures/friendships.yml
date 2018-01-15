@@ -1,49 +1,141 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  user: one
-  friend: one
-
-two:
-  user: two
-  friend: two
-
-three:
-  user: three
-  friend: three
-
-four:
-  user: four
-  friend: four
-
-five:
-  user: five
-  friend: five
-
-six:
-  user: two
-  friend: one
-
-seven:
-  user: two
-  friend: three
-
-eight:
-  user: four
-  friend: two
-
-nine:
-  user: four
-  friend: five
-
-ten:
-  user: one
-  friend: two
-
-eleven:
-  user: one
-  friend: four
-
-twelve:
-  user: one
-  friend: five
+---
+friendship_1:
+  id: 1
+  user_id: 2
+  friend_id: 2
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2018-01-09 08:58:13.426200000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &2 2018-01-09 08:58:13.426200000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *2
+friendship_2:
+  id: 2
+  user_id: 2
+  friend_id: 1
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2018-01-09 08:59:55.524368000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *3
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2018-01-09 08:59:55.524368000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *4
+friendship_3:
+  id: 3
+  user_id: 2
+  friend_id: 3
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2018-01-09 08:59:55.566572000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *5
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &6 2018-01-09 08:59:55.566572000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *6
+friendship_4:
+  id: 4
+  user_id: 4
+  friend_id: 4
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &7 2018-01-16 15:59:00.000000000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *7
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &8 2018-01-16 15:59:00.000000000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *8
+friendship_5:
+  id: 5
+  user_id: 4
+  friend_id: 2
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &9 2018-01-16 15:59:00.000000000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *9
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &10 2018-01-16 15:59:00.000000000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *10
+friendship_6:
+  id: 6
+  user_id: 4
+  friend_id: 5
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &11 2018-01-16 15:59:00.000000000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *11
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &12 2018-01-16 15:59:00.000000000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *12
+friendship_7:
+  id: 7
+  user_id: 1
+  friend_id: 1
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &13 2018-01-16 15:59:00.000000000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *13
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &14 2018-01-16 15:59:00.000000000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *14
+friendship_8:
+  id: 8
+  user_id: 1
+  friend_id: 2
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &15 2018-01-16 15:59:00.000000000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *15
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &16 2018-01-16 15:59:00.000000000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *16
+friendship_9:
+  id: 9
+  user_id: 1
+  friend_id: 4
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &17 2018-01-16 15:59:00.000000000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *17
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &18 2018-01-16 15:59:00.000000000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *18
+friendship_10:
+  id: 10
+  user_id: 1
+  friend_id: 5
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &19 2018-01-16 15:59:00.000000000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *19
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &20 2018-01-16 15:59:00.000000000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *20

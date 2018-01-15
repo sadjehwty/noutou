@@ -1,11 +1,58 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  user: one
-  oauth_token: MyString
-  oauth_expires_at: 2018-01-01 11:57:05
-
-two:
-  user: two
-  oauth_token: MyString
-  oauth_expires_at: 2018-01-01 11:57:05
+---
+session_1:
+  id: 1
+  user_id: 1
+  oauth_token: a
+  oauth_expires_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2019-01-16 15:59:00.000000000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &2 2018-01-16 15:59:00.000000000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *2
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2018-01-16 15:59:00.000000000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *3
+session_2:
+  id: 2
+  user_id: 2
+  oauth_token: b
+  oauth_expires_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2019-01-16 15:59:00.000000000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *4
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2018-01-16 15:59:00.000000000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *5
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &6 2018-01-16 15:59:00.000000000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *6
+session_3:
+  id: 3
+  user_id: 4
+  oauth_token: c
+  oauth_expires_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &7 2019-01-16 15:59:00.000000000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *7
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &8 2018-01-16 15:59:00.000000000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *8
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &9 2018-01-16 15:59:00.000000000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *9

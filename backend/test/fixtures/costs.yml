@@ -1,31 +1,115 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
+---
+Viaggio1:
+  id: 1
   name: Viaggio
-  when: 2017-12-04 22:10:50
-  travel: one
-
-two:
+  when: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2018-01-16 16:07:00.000000000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  travel_id: 1
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &2 2018-01-16 16:07:00.000000000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *2
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2018-01-16 16:07:00.000000000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *3
+Cena1:
+  id: 2
   name: Cena
-  when: 2017-12-04 22:10:51
-  travel: one
-
-three:
+  when: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2018-01-16 16:07:00.000000000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *4
+  travel_id: 1
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2018-01-16 16:07:00.000000000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *5
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &6 2018-01-16 16:07:00.000000000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *6
+Viaggio2:
+  id: 3
   name: Viaggio
-  when: 2017-12-04 22:10:50
-  travel: two
-
-four:
+  when: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2018-01-16 16:07:00.000000000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  travel_id: 2
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &2 2018-01-16 16:07:00.000000000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *2
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2018-01-16 16:07:00.000000000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *3
+Cena3:
+  id: 5
+  name: Cena
+  when: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2018-01-16 16:07:00.000000000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *4
+  travel_id: 3
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2018-01-16 16:07:00.000000000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *5
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &6 2018-01-16 16:07:00.000000000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *6
+Tempio:
+  id: 4
   name: Tempio
-  when: 2017-12-04 22:10:51
-  travel: two
-
-five:
-  name: Noleggio automobile
-  when: 2017-12-04 22:10:50
-  travel: three
-
-six:
-  name: Cena
-  when: 2017-12-04 22:10:51
-  travel: three
+  when: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &7 2018-01-16 16:07:00.000000000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *7
+  travel_id: 2
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &8 2018-01-16 16:07:00.000000000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *8
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &9 2018-01-16 16:07:00.000000000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *9
+Auto:
+  id: 6
+  name: Auto
+  when: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &10 2018-01-16 16:07:00.000000000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *10
+  travel_id: 3
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &11 2018-01-16 16:07:00.000000000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *11
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &12 2018-01-16 16:07:00.000000000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *12

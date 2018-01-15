@@ -1,11 +1,40 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  travel: one
-
-two:
-  travel: two
-
-three:
-  travel: three
-  
+---
+group_1:
+  id: 1
+  travel_id: 1
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2018-01-15 13:07:35.749517000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &2 2018-01-15 13:07:35.749517000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *2
+group_2:
+  id: 2
+  travel_id: 2
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2018-01-16 15:59:00.000000000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *3
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2018-01-16 15:59:00.000000000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *4
+group_3:
+  id: 3
+  travel_id: 3
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2018-01-16 15:59:00.000000000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *5
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &6 2018-01-16 15:59:00.000000000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *6

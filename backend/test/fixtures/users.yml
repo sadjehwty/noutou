@@ -1,41 +1,96 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
+---
+Davide:
+  id: 1
   name: Davide
   surname: Rizzi
-  nickname: saDjehwty
-  email: sadjehwty@gmail.com
-  password_digest: a
-  merge_code: nil
-
-two:
+  nickname: 
+  email: dice@inwind.it
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2018-01-09 08:58:13.345067000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &2 2018-01-09 08:58:13.345067000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *2
+  merge_code: 
+  uid: '1'
+  provider: test
+Alessandro:
+  id: 2
   name: Alessandro
   surname: Pasini
   nickname: Paso
   email: paso82@gmail.com
-  password_digest: a
-  merge_code: nil
-
-three:
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2018-01-09 08:59:55.501662000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *3
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2018-01-09 08:59:55.501662000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *4
+  merge_code: 
+  uid: '2'
+  provider: test
+Claudia:
+  id: 3
   name: Claudia
   surname: Pasini
   nickname: Kiriko
-  email: strega.kiriko@gmail.com
-  password_digest: a
-  merge_code: nil
-
-four:
+  email: kiriko@gmail.com
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2018-01-16 15:59:00.000000000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *5
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &6 2018-01-16 15:59:00.000000000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *6
+  merge_code: 
+  uid: 
+  provider: 
+Daniele:
+  id: 4
   name: Daniele
   surname: Tiles
   nickname: Last
   email: last.hope@gmail.com
-  password_digest: a
-  merge_code: nil
-
-five:
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &7 2018-01-16 15:59:00.000000000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *7
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &8 2018-01-16 15:59:00.000000000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *8
+  merge_code: 
+  uid: '3'
+  provider: test
+Sara:
+  id: 5
   name: Sara
   surname: Lobosco
   nickname: Teresa
-  email: sara.teresa@gmail.com
-  password_digest: a
-  merge_code: nil
+  email: sara@gmail.com
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &9 2018-01-16 15:59:00.000000000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *9
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &10 2018-01-16 15:59:00.000000000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *10
+  merge_code: 
+  uid: 
+  provider: 

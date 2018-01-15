@@ -1,86 +1,241 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  cost: one
-  value: 3.99
-  user: one
-
-two:
-  cost: one
-  value: 3.99
-  user: two
-
-three:
-  cost: one
-  value: 4.99
-  user: three
-
-four:
-  cost: two
-  value: 1.99
-  user: one
-
-five:
-  cost: two
-  value: 0.99
-  user: two
-
-six:
-  cost: three
-  value: 4.99
-  user: two
-
-seven:
-  cost: three
-  value: 4.99
-  user: four
-
-eight:
-  cost: three
-  value: 4.99
-  user: five
-
-nine:
-  cost: four
-  value: 4.99
-  user: two
-
-ten:
-  cost: four
-  value: 3.99
-  user: five
-
-eleven:
-  cost: six
-  value: 2.99
-  user: one
-
-twelve:
-  cost: six
-  value: 3.99
-  user: two
-
-thirteen:
-  cost: six
-  value: 4.99
-  user: four
-
-fourteen:
-  cost: five
-  value: 3.99
-  user: one
-
-fiveteen:
-  cost: five
-  value:2.99
-  user: two
-
-sixteen:
-  cost: five
-  value: 4.99
-  user: four
-
-seventeen:
-  cost: five
-  value: 2.99
-  user: five
+---
+share_1:
+  id: 1
+  cost_id: 1
+  value: !ruby/object:BigDecimal 27:0.3E1
+  user_id: 1
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2018-01-16 16:07:00.000000000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &2 2018-01-15 15:16:01.151819000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *2
+share_2:
+  id: 2
+  cost_id: 1
+  value: !ruby/object:BigDecimal 27:0.3E1
+  user_id: 2
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2018-01-16 16:07:00.000000000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *3
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &4 2018-01-15 15:16:33.321778000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *4
+share_3:
+  id: 3
+  cost_id: 1
+  value: !ruby/object:BigDecimal 27:0.4E1
+  user_id: 3
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &5 2018-01-16 16:07:00.000000000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *5
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &6 2018-01-15 15:16:53.002877000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *6
+share_4:
+  id: 4
+  cost_id: 3
+  value: !ruby/object:BigDecimal 27:0.5E1
+  user_id: 2
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &7 2018-01-16 16:07:00.000000000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *7
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &8 2018-01-15 15:17:13.332363000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *8
+share_5:
+  id: 5
+  cost_id: 3
+  value: !ruby/object:BigDecimal 27:0.3E1
+  user_id: 4
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &9 2018-01-16 16:07:00.000000000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *9
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &10 2018-01-15 15:17:19.429261000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *10
+share_6:
+  id: 6
+  cost_id: 5
+  value: !ruby/object:BigDecimal 27:0.2E1
+  user_id: 1
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &11 2018-01-16 16:07:00.000000000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *11
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &12 2018-01-15 15:17:34.530620000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *12
+share_7:
+  id: 7
+  cost_id: 5
+  value: !ruby/object:BigDecimal 27:0.3E1
+  user_id: 2
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &13 2018-01-16 16:07:00.000000000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *13
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &14 2018-01-15 15:17:41.623655000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *14
+share_8:
+  id: 8
+  cost_id: 5
+  value: !ruby/object:BigDecimal 27:0.4E1
+  user_id: 4
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &15 2018-01-16 16:07:00.000000000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *15
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &16 2018-01-15 15:19:03.567059000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *16
+share_9:
+  id: 9
+  cost_id: 2
+  value: !ruby/object:BigDecimal 27:0.1E1
+  user_id: 1
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &17 2018-01-16 16:07:00.000000000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *17
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &18 2018-01-15 15:19:14.552325000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *18
+share_10:
+  id: 10
+  cost_id: 2
+  value: !ruby/object:BigDecimal 27:0.1E1
+  user_id: 2
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &19 2018-01-16 16:07:00.000000000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *19
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &20 2018-01-15 15:19:19.431345000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *20
+share_11:
+  id: 11
+  cost_id: 4
+  value: !ruby/object:BigDecimal 27:0.4E1
+  user_id: 2
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &21 2018-01-16 16:07:00.000000000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *21
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &22 2018-01-15 15:19:29.882533000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *22
+share_12:
+  id: 12
+  cost_id: 4
+  value: !ruby/object:BigDecimal 27:0.3E1
+  user_id: 5
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &23 2018-01-16 16:07:00.000000000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *23
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &24 2018-01-15 15:19:33.845581000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *24
+share_13:
+  id: 13
+  cost_id: 6
+  value: !ruby/object:BigDecimal 27:0.3E1
+  user_id: 1
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &25 2018-01-16 16:07:00.000000000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *25
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &26 2018-01-15 15:19:41.955755000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *26
+share_14:
+  id: 14
+  cost_id: 6
+  value: !ruby/object:BigDecimal 27:0.2E1
+  user_id: 2
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &27 2018-01-16 16:07:00.000000000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *27
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &28 2018-01-15 15:19:46.053246000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *28
+share_15:
+  id: 15
+  cost_id: 6
+  value: !ruby/object:BigDecimal 27:0.4E1
+  user_id: 4
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &29 2018-01-16 16:07:00.000000000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *29
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &30 2018-01-15 15:19:49.873771000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *30
+share_16:
+  id: 16
+  cost_id: 6
+  value: !ruby/object:BigDecimal 27:0.2E1
+  user_id: 5
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &31 2018-01-16 16:07:00.000000000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *31
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &32 2018-01-15 15:19:53.301889000 Z
+    zone: !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *32
