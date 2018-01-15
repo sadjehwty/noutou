@@ -31,7 +31,7 @@ export class SharesComponent implements OnInit {
     }
     
     addCost(): void {
-      this.shareService.addCost(this.newShare).subscribe(share => { 
+      this.shareService.addShare(this.newShare).subscribe(share => { 
         this.shares.push(share);
         this.newShare=new Share();
       });
