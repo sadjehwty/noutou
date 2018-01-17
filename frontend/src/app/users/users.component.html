@@ -22,6 +22,6 @@
     <a routerLink="/users/{{user.id}}">
       <span class="badge">{{user.id}}</span> {{user.name}} <span *ngIf="user.nickname!=''">"{{user.nickname}}" </span>{{user.surname}}
     </a>
-    <button *ngIf="user.uid==''" class="delete" title="delete user" (click)="deleteUser(user)">x</button>
+    <button *ngIf="user.uid==null" class="delete" title="delete user" (click)="deleteUser(user)">x</button>
   </li>
 </ul>
