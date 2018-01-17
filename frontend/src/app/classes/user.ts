@@ -6,5 +6,6 @@ export class User {
   surname: string;
   email: string;
   merge_code: string;
+  uid: string;
   friendships: Friendship[];
 }
