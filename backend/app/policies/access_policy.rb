@@ -46,17 +46,17 @@ class AccessPolicy
       end
       # Costs
       can :read, Cost do |obj,usr|
-        can? :read, obj.travel
+        obj.travel.user==usr || obj.travel.group.users.include?(usr)
       end
       can [:update,:destroy,:create], Cost do |obj,usr|
-        can? :update, obj.travel
+        obj.travel.user==usr
       end
       # Shares
       can :read, Share do |obj,usr|
-        can? :read, obj.cost
+        obj.cost.travel.user==usr || obj.cost.travel.group.users.include?(usr)
       end
       can [:update,:destroy,:create], Share do |obj,usr|
-        can? :update, obj.cost
+        obj.cost.travel.user==usr
       end
     end
   end
