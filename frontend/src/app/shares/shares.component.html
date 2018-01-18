@@ -15,6 +15,6 @@
     <a routerLink="/shares/{{share.id}}">
       <span class="badge">{{share.id}}</span> {{share.user}} {{share.value}}
     </a>
-    <button class="delete" title="delete share" (click)="deleteCost(share)">x</button>
+    <button class="delete" title="delete share" (click)="deleteShare(share)">x</button>
   </li>
 </ul>
