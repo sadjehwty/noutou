@@ -24,8 +24,8 @@ export class MessageService {
     this.messages.push(message);
   }
  
-  clear(i: number) {
-    this.messages.splice(i,1);
+  clear(msg: Message) {
+    this.messages = this.messages.filter(m => m !== msg);
   }
 
 }
