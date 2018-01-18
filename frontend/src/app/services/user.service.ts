@@ -16,7 +16,7 @@ export class UserService extends AbstractService{
   
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.getDomain()+this.usersUrl).pipe(
-      tap(users => this.log(`fetched users`)),
+      tap(users => this.infoLog(`fetched users`)),
       catchError(this.handleError('getUsers', []))
     );
   }
@@ -24,7 +24,7 @@ export class UserService extends AbstractService{
   getUser(id: number): Observable<User> {
     const url = `${this.usersUrl}/${id}`;
     return this.http.get<User>(this.getDomain()+url).pipe(
-      tap(_ => this.log(`fetched user id=${id}`)),
+      tap(_ => this.infoLog(`fetched user id=${id}`)),
       catchError(this.handleError<User>(`getUser id=${id}`))
     );
   }
@@ -32,14 +32,14 @@ export class UserService extends AbstractService{
   updateUser(user: User): Observable<any> {
     const url = `${this.usersUrl}/${user.id}`;
     return this.http.put(this.getDomain()+url, user, this.getHeader()).pipe(
-      tap(_ => this.log(`updated user id=${user.id}`)),
+      tap(_ => this.infoLog(`updated user id=${user.id}`)),
       catchError(this.handleError<any>('updateUser'))
     );
   }
   
   addUser(user: User): Observable<User> {
     return this.http.post<User>(this.getDomain()+this.usersUrl, user, this.getHeader()).pipe(
-      tap((user: User) => this.log(`added user w/ id=${user.id}`)),
+      tap((user: User) => this.infoLog(`added user w/ id=${user.id}`)),
       catchError(this.handleError<User>('addUser'))
     );
   }
@@ -49,7 +49,7 @@ export class UserService extends AbstractService{
     const url = `${this.usersUrl}/${id}`;
     
     return this.http.delete<User>(this.getDomain()+url, this.getHeader()).pipe(
-      tap(_ => this.log(`deleted hero id=${id}`)),
+      tap(_ => this.infoLog(`deleted hero id=${id}`)),
       catchError(this.handleError<User>('deleteUser'))
     );
   }
@@ -61,7 +61,7 @@ export class UserService extends AbstractService{
     }
     const url = `${this.usersUrl}/search?query=${term}`;
     return this.http.get<User[]>(this.getDomain()+url).pipe(
-      tap(_ => this.log(`found users matching "${term}"`)),
+      tap(_ => this.infoLog(`found users matching "${term}"`)),
       catchError(this.handleError<User[]>('searchUsers', []))
     );
   }

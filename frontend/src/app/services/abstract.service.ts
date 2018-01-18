@@ -26,14 +26,17 @@ export class AbstractService {
     return this.http.get<Login>(this.domain+url).pipe(
       tap(login => {
         this.getHeader().headers.append('Authorization','bearer '+login.auth_token);
-        this.log(`login`);
+        this.infoLog(`login`);
       }),
       catchError(this.handleError('login: '+url, []))
     );
   }
   
-  protected log(message: string) {
-    this.messageService.add('AbstractService: ' + message);
+  protected errorLog(message: string) {
+    this.messageService.error('AbstractService: ' + message);
+  }
+  protected infoLog(message: string) {
+    this.messageService.info('AbstractService: ' + message);
   }
   protected handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
@@ -41,7 +44,7 @@ export class AbstractService {
       console.error(error); // log to console instead
 
       // TODO: better job of transforming error for user consumption
-      this.log(`${operation} failed: ${error.message}`);
+      this.errorLog(`${operation} failed: ${error.message}`);
 
       // Let the app keep running by returning an empty result.
       return of(result as T);

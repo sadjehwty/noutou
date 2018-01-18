@@ -18,7 +18,7 @@ export class ShareService extends AbstractService{
   getShares(id: number): Observable<Share[]> {
     const url = `${this.parentUrl}/${id}${this.sharesUrl}`;
     return this.http.get<Share[]>(this.getDomain()+url).pipe(
-      tap(shares => this.log(`fetched shares`)),
+      tap(shares => this.infoLog(`fetched shares`)),
                                                                  catchError(this.handleError('getShares', []))
     );
   }
@@ -26,7 +26,7 @@ export class ShareService extends AbstractService{
   getShare(id: number): Observable<Share> {
     const url = `${this.sharesUrl}/${id}`;
     return this.http.get<Share>(this.getDomain()+url).pipe(
-      tap(_ => this.log(`fetched share id=${id}`)),
+      tap(_ => this.infoLog(`fetched share id=${id}`)),
                                                      catchError(this.handleError<Share>(`getShare id=${id}`))
     );
   }
@@ -34,14 +34,14 @@ export class ShareService extends AbstractService{
   updateShare(share: Share): Observable<any> {
     const url = `${this.sharesUrl}/${share.id}`;
     return this.http.put(this.getDomain()+url, share, this.getHeader()).pipe(
-      tap(_ => this.log(`updated share id=${share.id}`)),
+      tap(_ => this.infoLog(`updated share id=${share.id}`)),
                                                            catchError(this.handleError<any>('updateShare'))
     );
   }
   
   addShare(share: Share): Observable<Share> {
     return this.http.post<Share>(this.getDomain()+this.sharesUrl, share, this.getHeader()).pipe(
-      tap((share: Share) => this.log(`added share w/ id=${share.id}`)),
+      tap((share: Share) => this.infoLog(`added share w/ id=${share.id}`)),
                                                                                         catchError(this.handleError<Share>('addShare'))
     );
   }
@@ -51,7 +51,7 @@ export class ShareService extends AbstractService{
     const url = `${this.sharesUrl}/${id}`;
     
     return this.http.delete<Share>(this.getDomain()+url, this.getHeader()).pipe(
-      tap(_ => this.log(`deleted hero id=${id}`)),
+      tap(_ => this.infoLog(`deleted hero id=${id}`)),
                                                                           catchError(this.handleError<Share>('deleteShare'))
     );
   }

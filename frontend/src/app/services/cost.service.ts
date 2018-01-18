@@ -18,7 +18,7 @@ export class CostService extends AbstractService{
   getCosts(id: number): Observable<Cost[]> {
     const url = `${this.parentUrl}/${id}${this.costsUrl}`;
     return this.http.get<Cost[]>(this.getDomain()+url).pipe(
-      tap(costs => this.log(`fetched costs`)),
+      tap(costs => this.infoLog(`fetched costs`)),
                                                                    catchError(this.handleError('getCosts', []))
     );
   }
@@ -26,7 +26,7 @@ export class CostService extends AbstractService{
   getCost(id: number): Observable<Cost> {
     const url = `${this.costsUrl}/${id}`;
     return this.http.get<Cost>(this.getDomain()+url).pipe(
-      tap(_ => this.log(`fetched cost id=${id}`)),
+      tap(_ => this.infoLog(`fetched cost id=${id}`)),
                                                       catchError(this.handleError<Cost>(`getCost id=${id}`))
     );
   }
@@ -34,14 +34,14 @@ export class CostService extends AbstractService{
   updateCost(cost: Cost): Observable<any> {
     const url = `${this.costsUrl}/${cost.id}`;
     return this.http.put(this.getDomain()+url, cost, this.getHeader()).pipe(
-      tap(_ => this.log(`updated cost id=${cost.id}`)),
+      tap(_ => this.infoLog(`updated cost id=${cost.id}`)),
       catchError(this.handleError<any>('updateCost'))
     );
   }
   
   addCost(cost: Cost): Observable<Cost> {
     return this.http.post<Cost>(this.getDomain()+this.costsUrl, cost, this.getHeader()).pipe(
-      tap((cost: Cost) => this.log(`added cost w/ id=${cost.id}`)),
+      tap((cost: Cost) => this.infoLog(`added cost w/ id=${cost.id}`)),
                                                                                            catchError(this.handleError<Cost>('addCost'))
     );
   }
@@ -51,7 +51,7 @@ export class CostService extends AbstractService{
     const url = `${this.costsUrl}/${id}`;
     
     return this.http.delete<Cost>(this.getDomain()+url, this.getHeader()).pipe(
-      tap(_ => this.log(`deleted hero id=${id}`)),
+      tap(_ => this.infoLog(`deleted hero id=${id}`)),
                                                                            catchError(this.handleError<Cost>('deleteCost'))
     );
   }

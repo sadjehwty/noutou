@@ -16,7 +16,7 @@ export class TravelService extends AbstractService{
   
   getTravels(): Observable<Travel[]> {
     return this.http.get<Travel[]>(this.getDomain()+this.travelsUrl).pipe(
-      tap(travels => this.log(`fetched travels`)),
+      tap(travels => this.infoLog(`fetched travels`)),
                                                                  catchError(this.handleError('getTravels', []))
     );
   }
@@ -24,7 +24,7 @@ export class TravelService extends AbstractService{
   getTravel(id: number): Observable<Travel> {
     const url = `${this.travelsUrl}/${id}`;
     return this.http.get<Travel>(this.getDomain()+url).pipe(
-      tap(_ => this.log(`fetched travel id=${id}`)),
+      tap(_ => this.infoLog(`fetched travel id=${id}`)),
                                                      catchError(this.handleError<Travel>(`getTravel id=${id}`))
     );
   }
@@ -32,14 +32,14 @@ export class TravelService extends AbstractService{
   updateTravel(travel: Travel): Observable<any> {
     const url = `${this.travelsUrl}/${travel.id}`;
     return this.http.put(this.getDomain()+url, travel, this.getHeader()).pipe(
-      tap(_ => this.log(`updated travel id=${travel.id}`)),
+      tap(_ => this.infoLog(`updated travel id=${travel.id}`)),
                                                            catchError(this.handleError<any>('updateTravel'))
     );
   }
   
   addTravel(travel: Travel): Observable<Travel> {
     return this.http.post<Travel>(this.getDomain()+this.travelsUrl, travel, this.getHeader()).pipe(
-      tap((travel: Travel) => this.log(`added travel w/ id=${travel.id}`)),
+      tap((travel: Travel) => this.infoLog(`added travel w/ id=${travel.id}`)),
                                                                                         catchError(this.handleError<Travel>('addTravel'))
     );
   }
@@ -49,7 +49,7 @@ export class TravelService extends AbstractService{
     const url = `${this.travelsUrl}/${id}`;
     
     return this.http.delete<Travel>(this.getDomain()+url, this.getHeader()).pipe(
-      tap(_ => this.log(`deleted hero id=${id}`)),
+      tap(_ => this.infoLog(`deleted hero id=${id}`)),
                                                                           catchError(this.handleError<Travel>('deleteTravel'))
     );
   }
