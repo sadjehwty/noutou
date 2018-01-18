@@ -27,16 +27,6 @@ class Api::ParticipantsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /participants/1
-  def update
-    authorize! :update, @participant
-    if @participant.update(participant_params)
-      render json: @participant
-    else
-      render json: @participant.errors, status: :unprocessable_entity
-    end
-  end
-
   # DELETE /participants/1
   def destroy
     authorize! :destroy, @participant
