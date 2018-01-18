@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   namespace :api do
     resources :sessions, only: [:destroy]
     resources :travels do
+      resources :participants
       resources :costs, shallow: true do
 	      resources :shares, shallow: true
       end
