@@ -1,9 +1,32 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  travel: one
-  user: one
-
-two:
-  travel: two
-  user: two
+group_11:
+  travel_id: 1
+  user_id: 1
+group_12:
+  travel_id: 1
+  user_id: 2
+group_13:
+  travel_id: 1
+  user_id: 3
+group_22:
+  travel_id: 2
+  user_id: 2
+group_24:
+  travel_id: 2
+  user_id: 4
+group_25:
+  travel_id: 2
+  user_id: 5
+group_31:
+  travel_id: 3
+  user_id: 1
+group_32:
+  travel_id: 3
+  user_id: 2
+group_34:
+  travel_id: 3
+  user_id: 4
+group_35:
+  travel_id: 3 
+  user_id: 5
