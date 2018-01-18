@@ -1,4 +1,4 @@
-class ParticipantsController < ApplicationController
+class Api::ParticipantsController < ApplicationController
   before_action :set_participant, only: [:show, :update, :destroy]
 
   # GET /participants

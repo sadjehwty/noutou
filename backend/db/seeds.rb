@@ -27,15 +27,18 @@ Travel.create!([
   {name: "Nihon'16", user_id: 4},
   {name: "CND'14", user_id: 1}
 ])
-g=Travel.find(1).group
-g.user_ids=[1,2,3]
-g.save
-g=Travel.find(2).group
-g.user_ids=[2,4,5]
-g.save
-g=Travel.find(3).group
-g.user_ids=[1,2,4,5]
-g.save
+Participant.create!([
+  {travel_id: 1, user_id: 1},
+  {travel_id: 1, user_id: 2},
+  {travel_id: 1, user_id: 3},
+  {travel_id: 2, user_id: 2},
+  {travel_id: 2, user_id: 4},
+  {travel_id: 2, user_id: 5},
+  {travel_id: 3, user_id: 1},
+  {travel_id: 3, user_id: 2},
+  {travel_id: 3, user_id: 4},
+  {travel_id: 3, user_id: 5}
+])
 Cost.create!([
   {name: "Viaggio", when: "2018-01-16 16:07:00", travel_id: 1},
   {name: "Cena", when: "2018-01-16 16:07:00", travel_id: 1},

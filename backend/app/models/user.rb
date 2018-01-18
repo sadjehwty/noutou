@@ -5,9 +5,9 @@ class User < ApplicationRecord
   has_many :friendships, foreign_key: "user_id", class_name: "Friendship", dependent: :destroy, autosave: true
   has_many :friends, through: :friendships
   has_many :journeys, source: :travels, class_name: 'Travel', dependent: :destroy
-  has_and_belongs_to_many :groups
+  has_many :participants
   has_many :shares, dependent: :destroy
-  has_many :travels, through: :groups
+  has_many :travels, through: :participants
   has_many :sessions, dependent: :destroy
   after_create do |user|
 	  user.friends << user
@@ -37,11 +37,10 @@ class User < ApplicationRecord
           friend.save
         end
       end
-      Group.transaction do
-        self.groups.each do |group|
-          group.users.delete self
-          group.users << user
-          group.save
+      Participant.transaction do
+        self.participants.each do |participant|
+          participant.user = user
+          participant.save
         end
       end
       Share.transaction do
