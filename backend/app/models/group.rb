@@ -11,4 +11,10 @@ class Group < ApplicationRecord
 		  group.errors[:users] << "In group some users aren't your friends with Travel's owner"
 	  end
   end
+  
+  def as_json(options={})
+    opt=(options||{}).merge({include: :users})
+    super opt
+    #super(opt).merge({methods: [:pippo]})
+  end
 end

@@ -12,7 +12,9 @@ class Travel < ApplicationRecord
     errors[:user] << 'Owner not in Group' unless travel.group.users.include? travel.user
   end
   
-  def as_json(options={})
-    super(include: {group: {include: :users}})
+  def total
+    costs.reduce(0) do |value, cost|
+      value+cost.total
+    end
   end
 end
