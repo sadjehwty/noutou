@@ -24,12 +24,6 @@ class User < ApplicationRecord
     super(include: {friendships: {include: :friend}})
   end
   
-  def amount group
-    shares.joins(:cost).where('costs.travel_id = ?', group.travel_id).reduce(0) do |value, share|
-      value+share.cost.average-share.value
-    end
-  end
-  
   def gen_code
     o = [('a'..'z'), ('A'..'Z'), ('0'..'9')].map(&:to_a).flatten
     self.merge_code = (0...128).map { o[rand(o.length)] }.join
