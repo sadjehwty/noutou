@@ -1,13 +1,15 @@
-<div id="search-component">
-  <h4>User Search</h4>
-  
-  <input #searchBox id="search-box" (keyup)="search(searchBox.value)" />
-  
-  <ul class="search-result">
-    <li *ngFor="let user of users$ | async" >
-      <a routerLink="/users/{{user.id}}">
-        {{user.name}} {{user.surname}}
-      </a>
-    </li>
-  </ul>
-</div>
+<form>
+  <div class="form-group row">
+    <label for="search-box" class="col-2 col-form-label">user</label>
+    <div class="col-10">
+      <input #searchBox id="search-box" (keyup)="search(searchBox.value)" class="form-control" placeholder="user" id="user" />
+    </div>
+  </div>
+</form>
+<ul class="list-group">
+  <li *ngFor="let user of users$ | async" class="list-group-item">
+    <a routerLink="/users/{{user.id}}">
+      {{user.name}} <span *ngIf="user.nickname!=''">"{{user.nickname}}" </span>{{user.surname}}
+    </a>
+  </li>
+</ul>
