@@ -1,11 +1,10 @@
 <div *ngIf="share">
   <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="#">Home</a></li>
-    <li class="breadcrumb-item"><a href="#">Library</a></li>
-    <li class="breadcrumb-item active">Data</li>
+    <li class="breadcrumb-item"><a routerLink="/travels/{{cost.travel_id}}" routerLinkActive="active">Travel</a></li>
+    <li class="breadcrumb-item"><a routerLink="/costs/{{cost.id}}" routerLinkActive="active">{{ cost.name }}</a></li>
+    <li class="breadcrumb-item"><a routerLink="/shares/{{share.id}}" routerLinkActive="active">{{ share.value }}</a></li>
   </ol>
   <div class="card card-outline-primary mb-3">
-    <div class="card-header">{{ share.value }}</div>
     <div class="card-block">
       <form>
         <div class="form-group row">
@@ -23,8 +22,8 @@
       </form>
     </div>
     <div class="card-footer">
-      <a href="#" (click)="goBack()" class="card-link btn btn-outline-secondary">go back</a>
-      <a href="#" (click)="save()" class="card-link btn btn-primary btn-lg">save</a>
+      <a href="#" (click)="goBack()" class="card-link btn btn-outline-secondary"><i class="oi oi-media-step-backward"></i> go back</a>
+      <a href="#" (click)="save()" class="card-link btn btn-primary btn-lg"><i class="oi oi-media-cloud-upload"></i> save</a>
     </div>
   </div>
 </div>

@@ -1,25 +1,39 @@
 <div *ngIf="user">
-  <h2>{{ user.name | uppercase }} <span *ngIf="user.nickname!=''">"{{ user.nickname | uppercase }}" </span>{{ user.surname | uppercase }}</h2>
-  <div>
-    <label>name:
-      <input [(ngModel)]="user.name" placeholder="name">
-    </label>
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a routerLink="/users/{{user.id}}" routerLinkActive="active">{{ user.name | uppercase }} <span *ngIf="user.nickname!=''">"{{ user.nickname | uppercase }}" </span>{{ user.surname | uppercase }}</a></li>
+  </ol>
+  <div class="card card-outline-primary mb-3">
+    <div class="card-block">
+      <form>
+        <div class="form-group row">
+          <label for="name" class="col-2 col-form-label">name</label>
+          <div class="col-10">
+            <input [(ngModel)]="user.name" class="form-control" placeholder="name" id="name" />
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="nickname" class="col-2 col-form-label">nickname</label>
+          <div class="col-10">
+            <input [(ngModel)]="user.nickname" class="form-control" placeholder="nickname" id="nickname" />
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="surname" class="col-2 col-form-label">surname</label>
+          <div class="col-10">
+            <input [(ngModel)]="user.surname" class="form-control" placeholder="surname" id="surname" />
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="email" class="col-2 col-form-label">email</label>
+          <div class="col-10">
+            <input [(ngModel)]="user.email" class="form-control" placeholder="email" id="email" type="email"/>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="card-footer">
+      <a href="#" (click)="goBack()" class="card-link btn btn-outline-secondary"><i class="oi oi-media-step-backward"></i> go back</a>
+      <a href="#" (click)="save()" class="card-link btn btn-primary btn-lg"><i class="oi oi-media-cloud-upload"></i> save</a>
+    </div>
   </div>
-  <div>
-    <label>nickname:
-      <input [(ngModel)]="user.nickname" placeholder="nickname">
-    </label>
-  </div>
-  <div>
-    <label>surname:
-      <input [(ngModel)]="user.surname" placeholder="surname">
-    </label>
-  </div>
-  <div>
-    <label>email:
-      <input [(ngModel)]="user.email" placeholder="email">
-    </label>
-  </div>
-  <button (click)="goBack()">go back</button>
-  <button (click)="save()">save</button>
 </div>

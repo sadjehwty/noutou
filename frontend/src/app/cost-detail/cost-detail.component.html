@@ -1,14 +1,29 @@
 <div *ngIf="cost">
-  <h2>{{ cost.name | uppercase }}</h2>
-  <div>
-    <label>name:
-      <input [(ngModel)]="cost.name" placeholder="cost">
-    </label>
-    <label>when:
-      <input [(ngModel)]="cost.when" placeholder="when">
-    </label>
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a routerLink="/travels/{{travel.id}}" routerLinkActive="active">{{ travel.name }}</a></li>
+    <li class="breadcrumb-item"><a routerLink="/costs/{{cost.id}}" routerLinkActive="active">{{ cost.name | uppercase }}</a></li>
+  </ol>
+  <div class="card card-outline-primary mb-3">
+    <div class="card-block">
+      <form>
+        <div class="form-group row">
+          <label for="name" class="col-2 col-form-label">name</label>
+          <div class="col-10">
+            <input [(ngModel)]="cost.name" class="form-control" placeholder="name" id="name" />
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="when" class="col-2 col-form-label">when</label>
+          <div class="col-10">
+            <input [(ngModel)]="cost.when" class="form-control" placeholder="when" id="when" type="datetime" />
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="card-footer">
+      <a href="#" (click)="goBack()" class="card-link btn btn-outline-secondary"><i class="oi oi-media-step-backward"></i> go back</a>
+      <a href="#" (click)="save()" class="card-link btn btn-primary btn-lg"><i class="oi oi-media-cloud-upload"></i> save</a>
+    </div>
   </div>
   <app-shares [cost]="cost"></app-shares>
-  <button (click)="goBack()">go back</button>
-  <button (click)="save()">save</button>
 </div>
