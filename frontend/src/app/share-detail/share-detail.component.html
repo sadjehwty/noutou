@@ -6,20 +6,18 @@
   </ol>
   <div class="card card-outline-primary mb-3">
     <div class="card-block">
-      <form>
-        <div class="form-group row">
-          <label for="user" class="col-2 col-form-label">user</label>
-          <div class="col-10">
-            <input [(ngModel)]="share.user_id" class="form-control" id="user" placeholder="user" />
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="value" class="col-2 col-form-label">amount</label>
-          <div class="col-10">
-            <input [(ngModel)]="share.value" type="number" step=".01" class="form-control" id="value" placeholder="value" />
-          </div>
-        </div>
-      </form>
+       <div class="form-group row">
+         <label for="user" class="col-2 col-form-label">user</label>
+         <div class="col-10">
+           <input [(ngModel)]="share.user_id" class="form-control" id="user" placeholder="user" />
+         </div>
+       </div>
+       <div class="form-group row">
+         <label for="value" class="col-2 col-form-label">amount</label>
+         <div class="col-10">
+           <input [(ngModel)]="share.value" type="number" step=".01" class="form-control" id="value" placeholder="value" />
+         </div>
+       </div>
     </div>
     <div class="card-footer">
       <a href="#" (click)="goBack()" class="card-link btn btn-outline-secondary"><i class="oi oi-media-step-backward"></i> go back</a>
