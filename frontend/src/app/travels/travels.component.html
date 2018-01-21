@@ -10,7 +10,7 @@
 <ul class="travels">
   <li *ngFor="let travel of travels">
     <a routerLink="/travels/{{travel.id}}">
-      <span class="badge">{{travel.id}}</span> {{travel.name}}
+      {{travel.name}}
     </a>
     <button class="delete" title="delete travel" (click)="deleteTravel(travel)">x</button>
   </li>

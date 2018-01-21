@@ -13,7 +13,7 @@
 <ul class="costs">
   <li *ngFor="let cost of costs">
     <a routerLink="/costs/{{cost.id}}">
-      <span class="badge">{{cost.id}}</span> {{cost.name}} {{cost.when}}
+      {{cost.when | date: 'dd/MM/yyyy'}}: {{cost.name}}
     </a>
     <button class="delete" title="delete cost" (click)="deleteCost(cost)">x</button>
   </li>

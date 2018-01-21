@@ -20,7 +20,7 @@
 <ul class="users">
   <li *ngFor="let user of users">
     <a routerLink="/users/{{user.id}}">
-      <span class="badge">{{user.id}}</span> {{user.name}} <span *ngIf="user.nickname!=null">"{{user.nickname}}" </span>{{user.surname}}
+      {{user.name}} <span *ngIf="user.nickname!=null">"{{user.nickname}}" </span>{{user.surname}}
     </a>
     <button *ngIf="user.uid==null" class="delete" title="delete user" (click)="deleteUser(user)">x</button>
   </li>
