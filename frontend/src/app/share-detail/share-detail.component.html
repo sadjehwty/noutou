@@ -1,8 +1,8 @@
 <div *ngIf="share">
   <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a routerLink="/travels/{{cost.travel_id}}" routerLinkActive="active">Travel</a></li>
-    <li class="breadcrumb-item"><a routerLink="/costs/{{cost.id}}" routerLinkActive="active">{{ cost.name }}</a></li>
-    <li class="breadcrumb-item"><a routerLink="/shares/{{share.id}}" routerLinkActive="active">{{ share.value }}</a></li>
+    <li class="breadcrumb-item" routerLink="/travels/{{share.cost.travel.id}}" routerLinkActive="active">{{ share.cost.travel.name }}</li>
+    <li class="breadcrumb-item" routerLink="/costs/{{share.cost.id}}" routerLinkActive="active">{{ share.cost.name }}</li>
+    <li class="breadcrumb-item" routerLink="/shares/{{share.id}}" routerLinkActive="active">{{ share.value | uppercase }}</li>
   </ol>
   <div class="card card-outline-primary mb-3">
     <div class="card-block">

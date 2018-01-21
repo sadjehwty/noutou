@@ -1,7 +1,7 @@
 <div *ngIf="cost">
   <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a routerLink="/travels/{{travel.id}}" routerLinkActive="active">{{ travel.name }}</a></li>
-    <li class="breadcrumb-item"><a routerLink="/costs/{{cost.id}}" routerLinkActive="active">{{ cost.name | uppercase }}</a></li>
+    <li class="breadcrumb-item" routerLink="/travels/{{cost.travel.id}}" routerLinkActive="active">{{ cost.travel.name }}</li>
+    <li class="breadcrumb-item" routerLink="/costs/{{cost.id}}" routerLinkActive="active">{{ cost.name | uppercase }}</li>
   </ol>
   <div class="card card-outline-primary mb-3">
     <div class="card-block">

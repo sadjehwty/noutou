@@ -1,6 +1,6 @@
 <div *ngIf="travel">
   <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a routerLink="/travels/{{travel.id}}" routerLinkActive="active">{{ travel.name | uppercase }}</a></li>
+    <li class="breadcrumb-item" routerLink="/travels/{{travel.id}}" routerLinkActive="active"><a>{{ travel.name | uppercase }}</a></li>
   </ol>
   <div class="card card-outline-primary mb-3">
     <div class="card-block">
