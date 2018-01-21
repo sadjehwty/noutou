@@ -7,7 +7,7 @@
 <ul class="list-group">
   <li *ngFor="let user of users$ | async" class="list-group-item">
     <a routerLink="/users/{{user.id}}">
-      {{user.name}} <span *ngIf="user.nickname!=''">"{{user.nickname}}" </span>{{user.surname}}
+      {{user.name}} <span *ngIf="user.nickname!=null">"{{user.nickname}}" </span>{{user.surname}}
     </a>
   </li>
 </ul>

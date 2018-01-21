@@ -1,6 +1,6 @@
 <div *ngIf="user">
   <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a routerLink="/users/{{user.id}}" routerLinkActive="active">{{ user.name | uppercase }} <span *ngIf="user.nickname!=''">"{{ user.nickname | uppercase }}" </span>{{ user.surname | uppercase }}</a></li>
+    <li class="breadcrumb-item" routerLink="/users/{{user.id}}" routerLinkActive="active">{{ user.name | uppercase }} <span *ngIf="user.nickname!=null">"{{ user.nickname | uppercase }}" </span>{{ user.surname | uppercase }}</li>
   </ol>
   <div class="card card-outline-primary mb-3">
     <div class="card-block">
