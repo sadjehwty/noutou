@@ -21,6 +21,7 @@ import { SharesComponent } from './shares/shares.component';
 import { ShareDetailComponent } from './share-detail/share-detail.component';
 import { MessagesComponent } from './messages/messages.component';
 import { AppRoutingModule } from './/app-routing.module';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { AppRoutingModule } from './/app-routing.module';
     CostDetailComponent,
     SharesComponent,
     ShareDetailComponent,
-    MessagesComponent
+    MessagesComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
