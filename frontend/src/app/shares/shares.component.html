@@ -13,7 +13,7 @@
 <ul class="shares">
   <li *ngFor="let share of shares">
     <a routerLink="/shares/{{share.id}}">
-      <span class="badge">{{share.id}}</span> {{ share.user.name  }} <span *ngIf="share.user.nickname!=null">"{{ share.user.nickname }}" </span>{{ share.user.surname }} {{share.value}}
+      {{ share.user.name  }} <span *ngIf="share.user.nickname!=null">"{{ share.user.nickname }}" </span>{{ share.user.surname }}: {{share.value}}
     </a>
     <button class="delete" title="delete share" (click)="deleteShare(share)">x</button>
   </li>
