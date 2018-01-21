@@ -5,4 +5,7 @@ class Share < ApplicationRecord
   validate do |share|
     errors[:user] << 'Share from User not in Group' unless share.cost.travel.group.users.include? share.user
   end
+  def as_json(options={})
+    super(include: [:user, {cost: {include: :travel}}])
+  end
 end

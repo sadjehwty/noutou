@@ -12,4 +12,8 @@ class Cost < ApplicationRecord
   def average
     shares.count > 0 ? total / shares.count : 0
   end
+  
+  def as_json(options={})
+      super({include: :travel})
+    end
 end
