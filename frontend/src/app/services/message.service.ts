@@ -21,6 +21,8 @@ export class MessageService {
     this.add(msg);
   }
   add(message: Message) {
+    if(this.messages.length>=5)
+      this.messages.shift();
     this.messages.push(message);
   }
  
