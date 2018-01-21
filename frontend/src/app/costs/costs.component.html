@@ -1,20 +1,44 @@
-<h2>Costs</h2>
-<div>
-  <label>Cost name:
-    <input [(ngModel)]="newCost.name" placeholder="name">
-  </label>
-  <label>Cost when:
-    <input [(ngModel)]="newCost.when" placeholder="when">
-  </label>
-  <button (click)="addUser()">
-    add
-  </button>
+<table class="table table-striped table-hover">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Costs</th>
+      <th scope="col"><i class="oi oi-plus" data-toggle="modal" data-target="#newCost"></i></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let cost of costs">
+      <td><a routerLink="/costs/{{cost.id}}">{{cost.when | date: 'dd/MM/yyyy'}}: {{cost.name}}</a></td>
+      <td><i class="oi oi-trash" (click)="deleteCost(cost)"></i></td>
+    </tr>
+  </tbody>
+</table>
+<div class="modal" id="newCost" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">New Cost</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       <div class="form-group row">
+         <label for="name" class="col-2 col-form-label">name</label>
+         <div class="col-10">
+           <input [(ngModel)]="newCost.name" class="form-control" placeholder="name" id="name" />
+         </div>
+       </div>
+       <div class="form-group row">
+         <label for="when" class="col-2 col-form-label">when</label>
+         <div class="col-10">
+           <input [(ngModel)]="newCost.when" class="form-control" placeholder="when" id="when" type="datetime" />
+         </div>
+       </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal"><span aria-hidden="true">&times;</span> close</button>
+        <button type="button" class="btn btn-primary btn-lg" (click)="addCost()"><i class="oi oi-media-cloud-upload"></i> save</button>
+      </div>
+    </div>
+  </div>
 </div>
-<ul class="costs">
-  <li *ngFor="let cost of costs">
-    <a routerLink="/costs/{{cost.id}}">
-      {{cost.when | date: 'dd/MM/yyyy'}}: {{cost.name}}
-    </a>
-    <button class="delete" title="delete cost" (click)="deleteCost(cost)">x</button>
-  </li>
-</ul>
