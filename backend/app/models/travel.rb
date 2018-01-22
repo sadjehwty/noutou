@@ -8,7 +8,7 @@ class Travel < ApplicationRecord
     Participant.create!({user: travel.user, travel: travel}) unless travel.participants.join(:users).where('users.id = ?',travel.user.id).count > 0
   end
   validate do |travel|
-    errors[:user] << 'Owner not in Group' unless travel.users.include? travel.user
+    errors[:user] << 'Owner not in Travel' unless travel.users.include? travel.user
   end
   
   def total
