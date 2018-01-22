@@ -24,6 +24,6 @@ class Participant < ApplicationRecord
     opt=(options||{}).merge({include: :users})
     super(opt).merge({
             :methods => [:amount]
-        }))
+        })
   end
 end
