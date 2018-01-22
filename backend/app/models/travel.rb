@@ -16,4 +16,9 @@ class Travel < ApplicationRecord
       value+cost.total
     end
   end
+  
+def as_json(options={})
+    opt=(options||{}).merge({include: :participants})
+    super(opt)
+  end
 end
