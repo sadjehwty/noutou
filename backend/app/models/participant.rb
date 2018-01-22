@@ -3,7 +3,7 @@ class Participant < ApplicationRecord
   belongs_to :user
 
 =begin
-# questi non hanno pi� senso qui
+# questi non hanno più senso qui
   validate do |group|
     if group.users.count > 0 && !group.users.include?(travel.user)
       group.errors[:users] << "Group without Travel's owner"

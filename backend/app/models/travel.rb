@@ -5,7 +5,7 @@ class Travel < ApplicationRecord
   has_many :users, through: :participants
   has_many :costs, dependent: :destroy, autosave: true
   before_validation do |travel|
-    Participant.create!({user: travel.user, travel: travel}) unless travel.participants.join(:users).where('users.id = ?',travel.user.id).count > 0
+    travel.users<<travel.user unless travel.users.include? travel.user
   end
   validate do |travel|
     errors[:user] << 'Owner not in Travel' unless travel.users.include? travel.user
