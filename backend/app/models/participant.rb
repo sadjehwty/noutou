@@ -3,7 +3,7 @@ class Participant < ApplicationRecord
   belongs_to :user
 
 =begin
-# questi non hanno più senso qui
+# questi non hanno piï¿½ senso qui
   validate do |group|
     if group.users.count > 0 && !group.users.include?(travel.user)
       group.errors[:users] << "Group without Travel's owner"
@@ -22,7 +22,8 @@ class Participant < ApplicationRecord
   end
   def as_json(options={})
     opt=(options||{}).merge({include: :users})
-    super opt
-    #super(opt).merge({methods: [:pippo]})
-  ends
+    super(opt).merge({
+            :methods => [:amount]
+        }))
+  end
 end
