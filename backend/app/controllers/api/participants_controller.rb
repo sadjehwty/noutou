@@ -3,22 +3,25 @@ class Api::ParticipantsController < ApplicationController
 
   # GET /participants
   def index
-    @participants = Participant.all
+    authorize! :read, Participant
+    @participants = Travel.find(params[:travel_id]).participants
 
     render json: @participants
   end
 
   # GET /participants/1
   def show
+    authorize! :read, @participant
     render json: @participant
   end
 
   # POST /participants
   def create
+    authorize! :create, Cost
     @participant = Participant.new(participant_params)
 
     if @participant.save
-      render json: @participant, status: :created, location: @participant
+      render json: @participant, status: :created
     else
       render json: @participant.errors, status: :unprocessable_entity
     end
@@ -26,6 +29,7 @@ class Api::ParticipantsController < ApplicationController
 
   # PATCH/PUT /participants/1
   def update
+    authorize! :update, @participant
     if @participant.update(participant_params)
       render json: @participant
     else
@@ -35,6 +39,7 @@ class Api::ParticipantsController < ApplicationController
 
   # DELETE /participants/1
   def destroy
+    authorize! :destroy, @participant
     @participant.destroy
   end
 
