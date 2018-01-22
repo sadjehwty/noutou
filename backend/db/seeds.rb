@@ -29,12 +29,9 @@ Travel.create!([
 ])
 Participant.create!([
   {travel_id: 1, user_id: 1},
-  {travel_id: 1, user_id: 2},
   {travel_id: 1, user_id: 3},
   {travel_id: 2, user_id: 2},
-  {travel_id: 2, user_id: 4},
   {travel_id: 2, user_id: 5},
-  {travel_id: 3, user_id: 1},
   {travel_id: 3, user_id: 2},
   {travel_id: 3, user_id: 4},
   {travel_id: 3, user_id: 5}
