@@ -17,8 +17,8 @@ class Travel < ApplicationRecord
     end
   end
   
-def as_json(options={})
-    opt=(options||{}).merge({include: :participants})
+  def as_json(options={})
+    opt=(options||{}).merge({include: {participants: {methods: :amount, include: :user}}})
     super(opt)
   end
 end

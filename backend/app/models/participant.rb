@@ -21,9 +21,7 @@ class Participant < ApplicationRecord
     end
   end
   def as_json(options={})
-    opt=(options||{}).merge({include: :users})
-    super(opt).merge({
-            :methods => [:amount]
-        })
+    opt=(options||{}).merge({include: :user, methods: :amount})
+    super(opt)
   end
 end
