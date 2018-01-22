@@ -28,32 +28,32 @@ class AccessPolicy
       end
       # Travel
       can :read, Travel do |obj,usr|
-        obj.user==usr || obj.group.users.include?(usr)
+        obj.user==usr || obj.users.include?(usr)
       end
       can :create, Travel
       can :update, Travel do |obj,usr|
         obj.user==usr
       end
       can :destroy, Travel do |obj,usr|
-        obj.user==usr && obj.group.users.count == 1
+        obj.user==usr && obj.users.count == 1
       end
-      # Group
-      can :read, Group do |obj,usr|
+      # Participant
+      can :read, Participant do |obj,usr|
         obj.users.include?(usr)
       end
-      can :update, Group do |obj,usr|
+      can :update, Participant do |obj,usr|
         obj.travel.user==usr
       end
       # Costs
       can :read, Cost do |obj,usr|
-        obj.travel.user==usr || obj.travel.group.users.include?(usr)
+        obj.travel.user==usr || obj.travel.users.include?(usr)
       end
       can [:update,:destroy,:create], Cost do |obj,usr|
         obj.travel.user==usr
       end
       # Shares
       can :read, Share do |obj,usr|
-        obj.cost.travel.user==usr || obj.cost.travel.group.users.include?(usr)
+        obj.cost.travel.user==usr || obj.cost.travel.users.include?(usr)
       end
       can [:update,:destroy,:create], Share do |obj,usr|
         obj.cost.travel.user==usr
