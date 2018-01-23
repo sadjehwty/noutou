@@ -64,8 +64,8 @@ class Api::UsersController < ApplicationController
   def search
     authorize! :read, User
     cond = "%#{params[:query]}%"
-    if params[:share_id]
-      @users = Share.find(params[:share_id]).travel.users.where("(name like ? OR surname like ? OR nickname like ?) and id <> ?", cond, cond, cond, @current_user.id)
+    if params[:travel_id]
+      @users = User.joins("LEFT JOIN participants ON(participants.travel_id = #{params[:travel_id].to_i} AND participants.user_id = users.id)").where("(name like ? OR surname like ? OR nickname like ?) and users.id <> ? and participants.id is null", cond, cond, cond, @current_user.id)
     else
       @users = User.where("(name like ? OR surname like ? OR nickname like ?) and id <> ?", cond, cond, cond, @current_user.id)
     end
