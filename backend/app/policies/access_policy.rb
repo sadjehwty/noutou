@@ -44,6 +44,9 @@ class AccessPolicy
       can :update, Participant do |obj,usr|
         obj.travel.user==usr
       end
+      can :destoy, Participant do |obj,usr|
+        obj.travel.costs.shares.where('shares.user_id = ?', obj.user_id).count.zero?
+      end
       # Costs
       can :read, Cost do |obj,usr|
         obj.travel.user==usr || obj.travel.users.include?(usr)
