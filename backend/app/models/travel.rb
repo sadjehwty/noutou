@@ -5,7 +5,7 @@ class Travel < ApplicationRecord
   has_many :users, through: :participants
   has_many :costs, dependent: :destroy, autosave: true
   before_validation do |travel|
-    travel.users<<travel.user unless travel.users.include? travel.user
+    travel.users << travel.user unless travel.users.include? travel.user
   end
   validate do |travel|
     errors[:user] << 'Owner not in Travel' unless travel.users.include? travel.user
@@ -15,10 +15,5 @@ class Travel < ApplicationRecord
     costs.reduce(0) do |value, cost|
       value+cost.total
     end
-  end
-  
-  def as_json(options={})
-    opt=(options||{}).merge({include: {participants: {methods: :amount, include: :user}}})
-    super(opt)
   end
 end
