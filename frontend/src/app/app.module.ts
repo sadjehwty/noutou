@@ -10,6 +10,7 @@ import { UserService } from './services/user.service';
 import { TravelService } from './services/travel.service';
 import { CostService } from './services/cost.service';
 import { ShareService } from './services/share.service';
+import { ParticipantService } from './services/participant.service';
 import { UsersComponent } from './users/users.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { UserSearchComponent } from './user-search/user-search.component';
@@ -45,7 +46,7 @@ import { LoginComponent } from './login/login.component';
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [MessageService, AbstractService, UserService, TravelService, CostService, ShareService],
+  providers: [MessageService, AbstractService, UserService, TravelService, CostService, ShareService, ParticipantService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
