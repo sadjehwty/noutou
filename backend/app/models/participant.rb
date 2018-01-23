@@ -1,6 +1,7 @@
 class Participant < ApplicationRecord
   belongs_to :travel
   belongs_to :user
+  validates :user_id, uniqueness: {scope: [:travel_id]}
 
 =begin
 # questi non hanno più senso qui
