@@ -23,6 +23,7 @@ import { ShareDetailComponent } from './share-detail/share-detail.component';
 import { MessagesComponent } from './messages/messages.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { LoginComponent } from './login/login.component';
+import { ParticipantsComponent } from './participants/participants.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { LoginComponent } from './login/login.component';
     SharesComponent,
     ShareDetailComponent,
     MessagesComponent,
-    LoginComponent
+    LoginComponent,
+    ParticipantsComponent
   ],
   imports: [
     BrowserModule,
