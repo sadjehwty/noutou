@@ -2,13 +2,13 @@
   <thead class="thead-dark">
     <tr>
       <th scope="col">Costs</th>
-      <th scope="col"><i class="icon dripicons-plus" data-toggle="modal" data-target="#newCost"></i></th>
+      <th scope="col"><i class="ion-plus" data-toggle="modal" data-target="#newCost"></i></th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let cost of costs">
       <td><a routerLink="/costs/{{cost.id}}">{{cost.when | date: 'dd/MM/yyyy'}}: {{cost.name}}</a></td>
-      <td><i class="icon dripicons-trash" (click)="deleteCost(cost)"></i></td>
+      <td><i class="ion-trash-b" (click)="deleteCost(cost)"></i></td>
     </tr>
   </tbody>
 </table>
@@ -37,7 +37,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal"><span aria-hidden="true">&times;</span> close</button>
-        <button type="button" class="btn btn-primary btn-lg" (click)="addCost()"><i class="icon dripicons-upload"></i> save</button>
+        <button type="button" class="btn btn-primary btn-lg" (click)="addCost()"><i class="ion-upload"></i> save</button>
       </div>
     </div>
   </div>
