@@ -6,6 +6,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AbstractService } from './abstract.service';
 import { MessageService } from './message.service';
 import { Login } from '../classes/login';
+import { Keys } from '../classes/keys';
 
 @Injectable()
 export class LoginService extends AbstractService{
@@ -13,6 +14,14 @@ export class LoginService extends AbstractService{
   private loginUrl = '/sessions';  // URL to web api
   
   constructor( protected http: HttpClient, protected messageService: MessageService) { super(http, messageService); }
+  
+  getKeys(){
+    const url = `${this.loginUrl}/keys`;
+    return this.http.get<Keys>(this.getDomain()+url).pipe(
+      tap(_ => this.infoLog(`fetched keys`)),
+      catchError(this.handleError<Keys>(`getKeys`))
+    );
+  }
   
   login(service:string, response: any){
     const url = `${this.loginUrl}/${service}/callback`;
