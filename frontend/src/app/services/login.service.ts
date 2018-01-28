@@ -16,7 +16,7 @@ export class LoginService extends AbstractService{
   
   login(service:string, response: any){
     const url = `${this.loginUrl}/${service}/callback`;
-    return this.http.get<Login>(this.getDomain()+url, response).pipe(
+    return this.http.post<Login>(this.getDomain()+url, response).pipe(
       tap(login => {
         this.getHeader().headers.append('Authorization','bearer '+login.auth_token);
         this.infoLog(`login`);

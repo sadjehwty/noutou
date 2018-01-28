@@ -1,7 +1,7 @@
 class Api::SessionsController < ApplicationController
   skip_before_action :authenticate_request, except: :destroy
 
-  # GET /auth/:provider/callback
+  # POST /auth/:provider/callback
   def success
     session = Session.authenticate request.env['omniauth.auth']
     if session && session.to_jwt
@@ -14,7 +14,12 @@ class Api::SessionsController < ApplicationController
   def failure
     render json: { error: 'Not Authorized' }, status: 401
   end
-
+  
+  # GET /sessions/keys
+  def keys
+    render json: { facebook: Rails.application.secrets.facebook_app, google: Rails.application.secrets.google_app, windows: Rails.application.secrets.windows_app }
+  end
+  
   # DELETE /sessions/1
   def destroy
     @current_session.destroy

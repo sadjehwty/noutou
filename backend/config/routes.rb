@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
-  get 'auth/:provider/callback', to: 'api/sessions#success', controller: 'api/sessions'
-  get 'auth/failure', to: 'api/success#failure', controller: 'api/sessions'
+  post 'auth/:provider/callback', to: 'api/sessions#success', controller: 'api/sessions'
+  get 'auth/failure', to: 'api/sessions#failure', controller: 'api/sessions'
   namespace :api do
-    resources :sessions, only: [:destroy]
+    resources :sessions, only: [:destroy] do
+      get 'keys', on: :collection
+    end
     resources :travels do
       resources :participants, shallow: true, only: [:index, :show, :create, :destroy]
       resources :costs, shallow: true do
