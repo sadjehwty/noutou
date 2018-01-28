@@ -11,6 +11,8 @@ import { TravelService } from './services/travel.service';
 import { CostService } from './services/cost.service';
 import { ShareService } from './services/share.service';
 import { ParticipantService } from './services/participant.service';
+import { LoginService } from './services/login.service';
+
 import { UsersComponent } from './users/users.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { UserSearchComponent } from './user-search/user-search.component';
@@ -48,7 +50,7 @@ import { ParticipantsComponent } from './participants/participants.component';
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [MessageService, AbstractService, UserService, TravelService, CostService, ShareService, ParticipantService],
+  providers: [MessageService, AbstractService, UserService, TravelService, CostService, ShareService, ParticipantService, LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

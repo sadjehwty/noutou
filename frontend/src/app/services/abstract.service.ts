@@ -22,16 +22,6 @@ export class AbstractService {
     return this.domain;
   }
   
-  login(url){
-    return this.http.get<Login>(this.domain+url).pipe(
-      tap(login => {
-        this.getHeader().headers.append('Authorization','bearer '+login.auth_token);
-        this.infoLog(`login`);
-      }),
-      catchError(this.handleError('login: '+url, []))
-    );
-  }
-  
   protected errorLog(message: string) {
     this.messageService.error('AbstractService: ' + message);
   }
