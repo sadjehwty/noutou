@@ -2,13 +2,13 @@
   <thead class="thead-dark">
     <tr>
       <th scope="col">Participants</th>
-      <th scope="col"><i class="oi oi-plus" data-toggle="modal" data-target="#newParticipant"></i></th>
+      <th scope="col"><i class="icon dripicons-plus" data-toggle="modal" data-target="#newParticipant"></i></th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let participant of participants">
       <td><a routerLink="/users/{{participant.user_id}}">{{participant.user.name}} <span *ngIf="participant.user.nickname!=null">"{{participant.user.nickname}}" </span>{{participant.user.surname}}</a></td>
-      <td><i class="oi oi-link-broken" (click)="deleteParticipant(participant)"></i></td>
+      <td><i class="icon dripicons-link-broken" (click)="deleteParticipant(participant)"></i></td>
     </tr>
   </tbody>
 </table>
@@ -32,7 +32,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal"><span aria-hidden="true">&times;</span> close</button>
-        <button type="button" class="btn btn-primary btn-lg" (click)="addParticipant()"><i class="oi oi-media-cloud-upload"></i> save</button>
+        <button type="button" class="btn btn-primary btn-lg" (click)="addParticipant()"><i class="icon dripicons-upload"></i> save</button>
       </div>
     </div>
   </div>

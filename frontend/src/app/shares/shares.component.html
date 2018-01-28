@@ -2,13 +2,13 @@
   <thead class="thead-dark">
     <tr>
       <th scope="col">Shares</th>
-      <th scope="col"><i class="oi oi-plus" data-toggle="modal" data-target="#newShare"></i></th>
+      <th scope="col"><i class="icon dripicons-plus" data-toggle="modal" data-target="#newShare"></i></th>
     </tr>
   </thead>
   <tbody>
 	  <tr *ngFor="let share of shares">
 	    <td><a routerLink="/shares/{{share.id}}">{{ share.user.name  }} <span *ngIf="share.user.nickname!=null">"{{ share.user.nickname }}" </span>{{ share.user.surname }}: {{share.value}}</a></td>
-	    <td><i class="oi oi-trash" (click)="deleteShare(share)"></i></td>
+	    <td><i class="icon dripicons-trash" (click)="deleteShare(share)"></i></td>
     </tr>
   </tbody>
 </table>
@@ -37,7 +37,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal"><span aria-hidden="true">&times;</span> close</button>
-        <button type="button" class="btn btn-primary btn-lg" (click)="addShare()"><i class="oi oi-media-cloud-upload"></i> save</button>
+        <button type="button" class="btn btn-primary btn-lg" (click)="addShare()"><i class="icon dripicons-upload"></i> save</button>
       </div>
     </div>
   </div>

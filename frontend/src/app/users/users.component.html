@@ -3,15 +3,15 @@
   <thead class="thead-dark">
     <tr>
       <th scope="col">Users</th>
-      <th scope="col"><i class="oi oi-plus" data-toggle="modal" data-target="#newUser"></i></th>
+      <th scope="col"><i class="icon dripicons-plus" data-toggle="modal" data-target="#newUser"></i></th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let user of users">
       <td><a routerLink="/users/{{user.id}}">{{user.name}} <span *ngIf="user.nickname!=null">"{{user.nickname}}" </span>{{user.surname}}</a></td>
       <td>
-        <i class="oi oi-link-broken" (click)="unlinkUser()"></i>
-        <i *ngIf="user.uid==null" class="oi oi-trash" (click)="deleteUser(user)"></i>
+        <i class="icon dripicons-link-broken" (click)="unlinkUser()"></i>
+        <i *ngIf="user.uid==null" class="icon dripicons-trash" (click)="deleteUser(user)"></i>
        </td>
     </tr>
   </tbody>
@@ -53,7 +53,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal"><span aria-hidden="true">&times;</span> close</button>
-        <button type="button" class="btn btn-primary btn-lg" (click)="addUser()"><i class="oi oi-media-cloud-upload"></i> save</button>
+        <button type="button" class="btn btn-primary btn-lg" (click)="addUser()"><i class="icon dripicons-upload"></i> save</button>
       </div>
     </div>
   </div>

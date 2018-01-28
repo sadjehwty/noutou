@@ -2,13 +2,13 @@
   <thead class="thead-dark">
     <tr>
       <th scope="col">Travels</th>
-      <th scope="col"><i class="oi oi-plus" data-toggle="modal" data-target="#newTravel"></i></th>
+      <th scope="col"><i class="icon dripicons-plus" data-toggle="modal" data-target="#newTravel"></i></th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let travel of travels">
       <td><a routerLink="/travels/{{travel.id}}">{{travel.name}}</a></td>
-      <td><i class="oi oi-trash" (click)="deleteTravel(travel)"></i></td>
+      <td><i class="icon dripicons-trash" (click)="deleteTravel(travel)"></i></td>
     </tr>
   </tbody>
 </table>
@@ -31,7 +31,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal"><span aria-hidden="true">&times;</span> close</button>
-        <button type="button" class="btn btn-primary btn-lg" (click)="addTravel()"><i class="oi oi-media-cloud-upload"></i> save</button>
+        <button type="button" class="btn btn-primary btn-lg" (click)="addTravel()"><i class="icon dripicons-upload"></i> save</button>
       </div>
     </div>
   </div>
