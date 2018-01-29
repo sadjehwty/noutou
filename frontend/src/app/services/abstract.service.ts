@@ -23,10 +23,10 @@ export class AbstractService {
   }
   
   protected errorLog(message: string) {
-    this.messageService.error('AbstractService: ' + message);
+    this.messageService.error(this.constructor.name+': ' + message);
   }
   protected infoLog(message: string) {
-    this.messageService.info('AbstractService: ' + message);
+    this.messageService.info(this.constructor.name+': ' + message);
   }
   protected handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
