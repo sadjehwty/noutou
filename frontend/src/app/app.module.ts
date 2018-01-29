@@ -5,7 +5,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { MessageService } from './services/message.service';
-import { AbstractService } from './services/abstract.service';
 import { UserService } from './services/user.service';
 import { TravelService } from './services/travel.service';
 import { CostService } from './services/cost.service';
@@ -28,6 +27,7 @@ import { LoginComponent } from './login/login.component';
 import { ParticipantsComponent } from './participants/participants.component';
 
 import { JwtInterceptor } from './jwt-interceptor'
+import { AppGlobals } from './app.globals';
 
 @NgModule({
   declarations: [
@@ -55,7 +55,7 @@ import { JwtInterceptor } from './jwt-interceptor'
     provide: HTTP_INTERCEPTORS, 
     useClass: JwtInterceptor, 
     multi: true 
-  },MessageService, AbstractService, UserService, TravelService, CostService, ShareService, ParticipantService, LoginService],
+  },MessageService, UserService, TravelService, CostService, ShareService, ParticipantService, LoginService, AppGlobals],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
