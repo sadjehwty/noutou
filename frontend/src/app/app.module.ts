@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { MessageService } from './services/message.service';
@@ -27,6 +27,7 @@ import { AppRoutingModule } from './/app-routing.module';
 import { LoginComponent } from './login/login.component';
 import { ParticipantsComponent } from './participants/participants.component';
 
+import { JwtInterceptor } from './jwt-interceptor'
 
 @NgModule({
   declarations: [
@@ -50,7 +51,11 @@ import { ParticipantsComponent } from './participants/participants.component';
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [MessageService, AbstractService, UserService, TravelService, CostService, ShareService, ParticipantService, LoginService],
+  providers: [{ 
+    provide: HTTP_INTERCEPTORS, 
+    useClass: JwtInterceptor, 
+    multi: true 
+  },MessageService, AbstractService, UserService, TravelService, CostService, ShareService, ParticipantService, LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
