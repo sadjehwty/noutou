@@ -26,9 +26,9 @@ class Session < ApplicationRecord
       token ||= headers['Authorization'].split(' ').last
       decoded_auth_token ||= JsonWebToken.decode(token)
       session ||= Session.joins(:user).where('users.uid = ? and users.provider = ? and oauth_token = ?',decoded_auth_token[:uid], decoded_auth_token[:prv],decoded_auth_token[:tkn]).first if decoded_auth_token
-      session || errors.add(:token, 'Invalid token') && nil
+      session || nil
     else
-      errors.add :token, 'Missing token'
+      nil
     end
   end
 end
