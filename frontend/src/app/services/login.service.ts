@@ -3,35 +3,27 @@ import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { catchError, map, tap } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { AbstractService } from './abstract.service';
 import { MessageService } from './message.service';
 import { Login } from '../classes/login';
 import { Keys } from '../classes/keys';
+import { AppGlobals } from '../app.globals';
 
 @Injectable()
-export class LoginService extends AbstractService{
+export class LoginService{
 
   private loginUrl = '/sessions';  // URL to web api
   
-  constructor( protected http: HttpClient, protected messageService: MessageService) { super(http, messageService); }
+  constructor( protected http: HttpClient, private _global: AppGlobals){}
   
   getKeys(){
     const url = `${this.loginUrl}/keys`;
-    return this.http.get<Keys>(this.getDomain()+url).pipe(
-      tap(_ => this.infoLog(`fetched keys`)),
-      catchError(this.handleError<Keys>(`getKeys`))
-    );
+    return this.http.get<Keys>(this._global.baseAppUrl+url);
   }
   
   login(service:string, response: any){
     const url = `${this.loginUrl}/${service}/callback`;
-    return this.http.post<Login>(this.getDomain()+url, response).pipe(
-      tap(login => {
-        this.getHeader().headers.append('Authorization','bearer '+login.auth_token);
-        this.infoLog(`login`);
-      }),
-      catchError(this.handleError('login: '+url, []))
-    );
+    return this.http.post<Login>(this._global.baseAppUrl+url, response).pipe(
+      tap(login => {localStorage.setItem('jwt',login.auth_token);}));
   }
 
 }

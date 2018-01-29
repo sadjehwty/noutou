@@ -3,55 +3,40 @@ import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { catchError, map, tap } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { AbstractService } from './abstract.service';
 import { MessageService } from './message.service';
 import { User } from '../classes/user';
+import { AppGlobals } from '../app.globals';
 
 @Injectable()
-export class UserService extends AbstractService{
+export class UserService{
 
   private usersUrl = '/users';  // URL to web api
   
-  constructor( protected http: HttpClient, protected messageService: MessageService) { super(http, messageService); }
+  constructor( protected http: HttpClient, private _global: AppGlobals){}
   
   getUsers(): Observable<User[]> {
-    return this.http.get<User[]>(this.getDomain()+this.usersUrl).pipe(
-      tap(users => this.infoLog(`fetched users`)),
-      catchError(this.handleError('getUsers', []))
-    );
+    return this.http.get<User[]>(this._global.baseAppUrl+this.usersUrl);
   }
   
   getUser(id: number): Observable<User> {
     const url = `${this.usersUrl}/${id}`;
-    return this.http.get<User>(this.getDomain()+url).pipe(
-      tap(_ => this.infoLog(`fetched user id=${id}`)),
-      catchError(this.handleError<User>(`getUser id=${id}`))
-    );
+    return this.http.get<User>(this._global.baseAppUrl+url);
   }
   
   updateUser(user: User): Observable<any> {
     const url = `${this.usersUrl}/${user.id}`;
-    return this.http.put(this.getDomain()+url, user, this.getHeader()).pipe(
-      tap(_ => this.infoLog(`updated user id=${user.id}`)),
-      catchError(this.handleError<any>('updateUser'))
-    );
+    return this.http.put(this._global.baseAppUrl+url, user);
   }
   
   addUser(user: User): Observable<User> {
-    return this.http.post<User>(this.getDomain()+this.usersUrl, user, this.getHeader()).pipe(
-      tap((user: User) => this.infoLog(`added user w/ id=${user.id}`)),
-      catchError(this.handleError<User>('addUser'))
-    );
+    return this.http.post<User>(this._global.baseAppUrl+this.usersUrl, user);
   }
   
   deleteUser (user: User | number): Observable<User> {
     const id = typeof user === 'number' ? user : user.id;
     const url = `${this.usersUrl}/${id}`;
     
-    return this.http.delete<User>(this.getDomain()+url, this.getHeader()).pipe(
-      tap(_ => this.infoLog(`deleted hero id=${id}`)),
-      catchError(this.handleError<User>('deleteUser'))
-    );
+    return this.http.delete<User>(this._global.baseAppUrl+url);
   }
   
   searchUsers(term: string): Observable<User[]> {
@@ -60,10 +45,7 @@ export class UserService extends AbstractService{
       return of([]);
     }
     const url = `${this.usersUrl}/search?query=${term}`;
-    return this.http.get<User[]>(this.getDomain()+url).pipe(
-      tap(_ => this.infoLog(`found users matching "${term}"`)),
-      catchError(this.handleError<User[]>('searchUsers', []))
-    );
+    return this.http.get<User[]>(this._global.baseAppUrl+url);
   }
 
 }
