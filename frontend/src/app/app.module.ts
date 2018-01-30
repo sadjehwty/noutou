@@ -11,6 +11,7 @@ import { CostService } from './services/cost.service';
 import { ShareService } from './services/share.service';
 import { ParticipantService } from './services/participant.service';
 import { LoginService } from './services/login.service';
+import { FriendshipService } from './services/friendship.service';
 
 import { UsersComponent } from './users/users.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
@@ -55,7 +56,7 @@ import { AppGlobals } from './app.globals';
     provide: HTTP_INTERCEPTORS, 
     useClass: AuthInterceptor, 
     multi: true 
-  },MessageService, UserService, TravelService, CostService, ShareService, ParticipantService, LoginService, AppGlobals],
+  },MessageService, UserService, TravelService, CostService, ShareService, ParticipantService, LoginService, AppGlobals, FriendshipService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
