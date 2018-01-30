@@ -11,14 +11,19 @@ export class UsersComponent implements OnInit {
   
   users: User[];
   newUser: User;
+  user: User;
   
   constructor(private userService: UserService) { }
   
   ngOnInit() {
     this.newUser = new User();
     this.getUsers();
+    this.getCurrentUser();
   }
   
+  getCurrentUser(): void {
+    this.userService.getUser(1).subscribe(user => this.user = user);
+  }
   getUsers(): void {
     this.userService.getUsers().subscribe(users => this.users = users);
   }
