@@ -1,9 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Travel } from '../classes/travel';
 import { Participant } from '../classes/participant';
+import { Friendship } from '../classes/friendship';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { ParticipantService } from '../services/participant.service';
+import { FriendshipService } from '../services/friendship.service';
 
 @Component({
   selector: 'app-participants',
@@ -14,17 +16,24 @@ export class ParticipantsComponent implements OnInit {
   
   @Input() travel: Travel;
   participants: Participant[];
+  friendships: Friendship[];
   newParticipant: Participant;
   
   constructor(
     private route: ActivatedRoute,
     private participantService: ParticipantService,
+    private friendshipService: FriendshipService,
     private location: Location) { }      
         
     ngOnInit() {
       this.newParticipant=new Participant();
       this.newParticipant.travel_id=this.travel.id;
       this.getParticipants();
+      this.getFriendships();
+    }
+    
+    private getFriendships(){
+      this.friendshipService.getFriendships(this.travel.user_id).subscribe(friendships => this.friendships = friendships);
     }
     
     getParticipants(): void {
