@@ -4,13 +4,12 @@ import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/observable/throw'
 import 'rxjs/add/operator/catch';
 import { MessageService } from './services/message.service';
-import { Location } from '@angular/common';
+import { Router } from '@angular/router'; 
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
   
-  constructor(private messageService: MessageService,
-              private location: Location) { }
+  constructor(private messageService: MessageService, private router: Router) { }
   
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     
@@ -21,14 +20,12 @@ export class AuthInterceptor implements HttpInterceptor {
     return next.handle(authReq)
     .catch((error, caught) => {
       if(error.status==401){
-        this.location.go('/login');
-        return Observable.throw('Redirect');
-      }else{
-        //intercept the respons error and displace it to the console
-        this.messageService.error(error.message);
-        //return the error to the method that called it
-        return Observable.throw(error);
+        this.router.navigate(['/login']);
       }
+      //intercept the respons error and displace it to the console
+      this.messageService.error(error.message);
+      //return the error to the method that called it
+      return Observable.throw(error);
     }) as any;
   }
 }
