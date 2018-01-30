@@ -20,6 +20,7 @@ export class AuthInterceptor implements HttpInterceptor {
     return next.handle(authReq)
     .catch((error, caught) => {
       if(error.status==401){
+        localStorage.clearItem('jwt');
         this.router.navigate(['/login']);
       }
       //intercept the respons error and displace it to the console
