@@ -1,5 +1,7 @@
 class Share < ApplicationRecord
   validates :value, numericality: true
+  validates :user_id, uniqueness: {scope: [:cost_id]}
+  
   belongs_to :cost
   belongs_to :user
   validate do |share|
