@@ -17,7 +17,7 @@ class Api::ParticipantsController < ApplicationController
 
   # POST /participants
   def create
-    authorize! :create, Cost
+    authorize! :create, Participant
     @participant = Participant.new(participant_params)
 
     if @participant.save
