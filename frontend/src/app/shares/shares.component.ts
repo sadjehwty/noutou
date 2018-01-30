@@ -1,9 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Cost } from '../classes/cost';
 import { Share } from '../classes/share';
+import { Participant } from '../classes/participant';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { ShareService } from '../services/share.service';
+import { ParticipantService } from '../services/participant.service';
 
 @Component({
   selector: 'app-shares',
@@ -15,15 +17,22 @@ export class SharesComponent implements OnInit {
   @Input() cost: Cost;
   shares: Share[];
   newShare: Share;
+  participants: Participant[];
   
   constructor(
     private route: ActivatedRoute,
     private shareService: ShareService,
+    private participantService: ParticipantService,
     private location: Location) { }      
 
     ngOnInit() {
       this.newShare=new Share();
       this.getShares();
+      this.getParticipants();
+    }
+    
+    private getParticipants(){
+      this.participantService.getParticipants(this.cost.travel.id).subscribe(participants => this.participants = participants);
     }
     
     getShares(): void {
