@@ -26,7 +26,7 @@ import { AppRoutingModule } from './/app-routing.module';
 import { LoginComponent } from './login/login.component';
 import { ParticipantsComponent } from './participants/participants.component';
 
-import { JwtInterceptor } from './jwt-interceptor'
+import { AuthInterceptor } from './auth.interceptor'
 import { AppGlobals } from './app.globals';
 
 @NgModule({
@@ -53,7 +53,7 @@ import { AppGlobals } from './app.globals';
   ],
   providers: [{ 
     provide: HTTP_INTERCEPTORS, 
-    useClass: JwtInterceptor, 
+    useClass: AuthInterceptor, 
     multi: true 
   },MessageService, UserService, TravelService, CostService, ShareService, ParticipantService, LoginService, AppGlobals],
   bootstrap: [AppComponent]

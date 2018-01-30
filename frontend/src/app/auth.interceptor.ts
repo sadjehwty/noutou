@@ -7,7 +7,7 @@ import { MessageService } from './services/message.service';
 import { Location } from '@angular/common';
 
 @Injectable()
-export class JwtInterceptor implements HttpInterceptor {
+export class AuthInterceptor implements HttpInterceptor {
   
   constructor(private messageService: MessageService,
               private location: Location) { }
