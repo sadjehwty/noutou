@@ -10,6 +10,8 @@ import { LoginService } from '../services/login.service';
 export class LoginComponent implements OnInit {
 
   keys: Keys;
+  FB: any;
+  gapi: any;
   
   constructor(private loginService: LoginService) { }
 
@@ -27,9 +29,11 @@ export class LoginComponent implements OnInit {
         version: 'v2.6',
         cookie: true // IMPORTANT must enable cookies to allow the server to access the session
       });
-    FB.login(function(response) {
+    FB.login((response: any) => {
       if (response.authResponse) {
         this.loginService.login('facebook', response);
+      } else {
+        console.log("FB non riuscito")
       }
     });
   }
@@ -42,7 +46,7 @@ export class LoginComponent implements OnInit {
           client_id: this.keys.google,
           scope: 'email profile'
         };
-    gapi.auth.authorize(params, function(response) {
+    gapi.auth.authorize(params, (response: any) => {
       if (response && !response.error) {
         this.loginService.login('google_oauth2', response);
       } else {
