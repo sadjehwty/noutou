@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       end
     end
     resources :users do
+      resources :friendships, shallow: true, only: [:index, :show, :create, :destroy]
       get 'search', on: :collection
       patch 'merge', on: :member
       put 'sendmail', on: :member
