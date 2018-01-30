@@ -9,9 +9,10 @@ import { LoginService } from '../services/login.service';
 })
 export class LoginComponent implements OnInit {
 
-  keys: Keys;
   FB: any;
+  WL: any;
   gapi: any;
+  googleKey: string;
   
   constructor(private loginService: LoginService) { }
 
@@ -20,15 +21,22 @@ export class LoginComponent implements OnInit {
   }
   
   private getKeys():void{
-    this.loginService.getKeys().subscribe(keys => this.keys = keys);
+    this.loginService.getKeys().subscribe(keys => {
+      this.googleKey=keys.google;
+      WL.init({
+        client_id: keys.windows,
+        scope: ['wl.emails', 'wl.basic'],
+        response_type: 'code',
+        redirect_uri: 'https://jwt.macrobug.dev/Test'
+      });
+      FB.init({
+        appId: keys.facebook,
+        version: 'v2.6'
+      });
+    });
   }
   
   facebook(){
-    FB.init({
-        appId: this.keys.facebook,
-        version: 'v2.6',
-        cookie: true // IMPORTANT must enable cookies to allow the server to access the session
-      });
     FB.login((response: any) => {
       if (response.authResponse) {
         this.loginService.login('facebook', response);
@@ -37,13 +45,21 @@ export class LoginComponent implements OnInit {
       }
     });
   }
-  
+  windows(){
+    WL.login().then((response: any) => {
+      if (response && !response.error) {
+        this.loginService.login('microsoft_live', response);
+      } else {
+        console.log("WL non riuscito")
+      }
+    });
+  }
   google(){
-    var params={
+    let params={
           immediate: false,
           response_type: 'code',
           cookie_policy: 'single_host_origin',
-          client_id: this.keys.google,
+          client_id: this.googleKey,
           scope: 'email profile'
         };
     gapi.auth.authorize(params, (response: any) => {
