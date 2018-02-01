@@ -8,13 +8,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let user of users">
-      <td><a routerLink="/users/{{user.id}}">{{user.name}} <span *ngIf="user.nickname!=null">"{{user.nickname}}" </span>{{user.surname}}</a></td>
-      <td>
-        <i class="ion-heart-broken" (click)="unlinkUser()"></i>
-        <i *ngIf="user.uid==null" class="ion-trash-b" (click)="deleteUser(user)"></i>
-       </td>
-    </tr>
+    <app-friendships [user]="user"></app-friendships>
   </tbody>
 </table>
 <div class="modal" id="newUser" tabindex="-1" role="dialog">

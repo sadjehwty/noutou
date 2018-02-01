@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { User } from '../classes/user';
 import { UserService } from '../services/user.service';
 
@@ -9,23 +10,20 @@ import { UserService } from '../services/user.service';
 })
 export class UsersComponent implements OnInit {
   
-  users: User[];
   newUser: User;
   user: User;
   
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService,
+              private route: ActivatedRoute) { }
   
   ngOnInit() {
     this.newUser = new User();
-    this.getUsers();
-    this.getCurrentUser();
+    this.getUser();
   }
   
-  getCurrentUser(): void {
-    this.userService.getUser(1).subscribe(user => this.user = user);
-  }
-  getUsers(): void {
-    this.userService.getUsers().subscribe(users => this.users = users);
+  getUser(): void {
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.userService.getUser(id).subscribe(user => this.user = user);
   }
   
   addUser(): void {
@@ -34,13 +32,8 @@ export class UsersComponent implements OnInit {
     this.newUser.nickname = this.newUser.nickname.trim();
     this.newUser.email = this.newUser.email.trim();
     this.userService.addUser(this.newUser).subscribe(user => { 
-        this.users.push(user);
+        //this.users.push(user);
         this.newUser = new User();
     });
-  }
-  
-  deleteUser(user: User): void {
-    this.users = this.users.filter(t => t !== user);
-    this.userService.deleteUser(user).subscribe();
   }
 }
