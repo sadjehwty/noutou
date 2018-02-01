@@ -31,14 +31,6 @@ export class FriendshipsComponent implements OnInit {
     this.friendshipService.getFriendships(this.user.id).subscribe(friendships => this.friendships = friendships);
   }
   
-  addFriendship(): void {
-    this.friendshipService.addFriendship(this.newFriendship).subscribe(friendship => { 
-      this.friendships.push(friendship);
-      this.newFriendship=new Friendship();
-      this.newFriendship.user_id=this.user.id;
-    });
-  }
-  
   deleteFriendship(friendship: Friendship): void {
     this.friendships = this.friendships.filter(c => c !== friendship);
     this.friendshipService.deleteFriendship(friendship).subscribe();
