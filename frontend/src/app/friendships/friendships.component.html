@@ -1,0 +1,8 @@
+<tr *ngFor="let friendship of friendships">
+  <td><a routerLink="/users/{{friendship.friend_id}}">{{friendship.user.name}} <span *ngIf="friendship.user.nickname!=null">"{{friendship.user.nickname}}" </span>{{friendship.user.surname}}</a></td>
+  <td>
+    <i class="ion-heart-broken" (click)="deleteFriendship(friendship)"></i>
+    <i class="ion-heart-broken" (click)="mergableUser(friendship.user)"></i>
+    <i *ngIf="friendship.user.uid==null" class="ion-trash-b" (click)="deleteUser(user)"></i>
+  </td>
+</tr>

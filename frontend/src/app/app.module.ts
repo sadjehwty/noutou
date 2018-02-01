@@ -29,6 +29,7 @@ import { ParticipantsComponent } from './participants/participants.component';
 
 import { AuthInterceptor } from './auth.interceptor'
 import { AppGlobals } from './app.globals';
+import { FriendshipsComponent } from './friendships/friendships.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { AppGlobals } from './app.globals';
     ShareDetailComponent,
     MessagesComponent,
     LoginComponent,
-    ParticipantsComponent
+    ParticipantsComponent,
+    FriendshipsComponent
   ],
   imports: [
     BrowserModule,
