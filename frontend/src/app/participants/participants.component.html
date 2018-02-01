@@ -26,7 +26,7 @@
          <label for="user" class="col-2 col-form-label">user</label>
          <div class="col-10">
           <select [(ngModel)]="newParticipant.user_id" class="form-control" id="user" placeholder="user">
-             <option *ngFor="let f of friendships" [value]="f.friend_id" >{{ f.user.name}} <span *ngIf="f.user.nickname!=null">"{{f.user.nickname}}" </span>{{f.user.surname}}</option>
+             <option *ngFor="let f of friendships" [value]="f.friend_id" >{{ f.friend.name}} <span *ngIf="f.friend.nickname!=null">"{{f.friend.nickname}}" </span>{{f.friend.surname}}</option>
            </select>
            <input [(ngModel)]="newParticipant.travel_id" class="form-control" type="hidden" />
          </div>
