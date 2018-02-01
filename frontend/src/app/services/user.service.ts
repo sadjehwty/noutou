@@ -47,5 +47,14 @@ export class UserService{
     const url = `${this.usersUrl}/search?query=${term}`;
     return this.http.get<User[]>(this._global.baseAppUrl+url);
   }
-
+  
+  mergableUser(user: User): Observable<User> {
+    const url = `${this.usersUrl}/${user.id}/sendmail`;
+    return this.http.put<User>(this._global.baseAppUrl+url, user);
+  }
+  
+  mergeUser(user: User): Observable<User> {
+    const url = `${this.usersUrl}/${user.id}/merge`;
+    return this.http.patch<User>(this._global.baseAppUrl+url, user);
+  }
 }
