@@ -9,9 +9,9 @@ import { CostDetailComponent }  from './cost-detail/cost-detail.component';
 import { ShareDetailComponent }  from './share-detail/share-detail.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/users', pathMatch: 'full' },
+  { path: '', redirectTo: '/travels', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
-  { path: 'users', component: UsersComponent },
+  { path: 'self/:id', component: UsersComponent },
   { path: 'travels', component: TravelsComponent },
   { path: 'users/:id', component: UserDetailComponent },
   { path: 'travels/:id', component: TravelDetailComponent },
