@@ -10,6 +10,14 @@ class AccessPolicy
     # The base role with no additional conditions.
     # Applies to every user.
     role :guest do
+      # Friendship
+      can :read, Friendship do |obj,usr|
+        usr.friendships.include? obj
+      end
+      can :create, Friendship
+      can :destroy, Friendship do |obj,usr|
+        usr.friendships.include? obj
+      end
       # User
       can :read, User
       can :seach, User
