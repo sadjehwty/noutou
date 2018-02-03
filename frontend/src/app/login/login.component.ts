@@ -23,12 +23,12 @@ export class LoginComponent implements OnInit {
   private getKeys():void{
     this.loginService.getKeys().subscribe(keys => {
       this.googleKey=keys.google;
-      WL.init({
+      /*WL.init({
         client_id: keys.windows,
         scope: ['wl.emails', 'wl.basic'],
         response_type: 'code',
         redirect_uri: 'https://jwt.macrobug.dev/Test'
-      });
+      });*/
       FB.init({
         appId: keys.facebook,
         version: 'v2.6'
@@ -46,13 +46,13 @@ export class LoginComponent implements OnInit {
     });
   }
   windows(){
-    WL.login().then((response: any) => {
+    /*WL.login().then((response: any) => {
       if (response && !response.error) {
         this.loginService.login('microsoft_live', response);
       } else {
         console.log("WL non riuscito")
       }
-    });
+    });*/
   }
   google(){
     let params={
@@ -63,6 +63,7 @@ export class LoginComponent implements OnInit {
           scope: 'email profile'
         };
     gapi.auth.authorize(params, (response: any) => {
+      console.log(response);
       if (response && !response.error) {
         this.loginService.login('google_oauth2', response);
       } else {
