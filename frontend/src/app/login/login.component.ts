@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Keys } from '../classes/keys';
 import { LoginService } from '../services/login.service';
+import { MessageService } from '../services/message.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +16,7 @@ export class LoginComponent implements OnInit {
   gapi: any;
   googleKey: string;
   
-  constructor(private loginService: LoginService) { }
+  constructor(private messageService: MessageService,private loginService: LoginService, private router: Router) { }
 
   ngOnInit() {
     this.getKeys();
@@ -39,9 +41,11 @@ export class LoginComponent implements OnInit {
   facebook(){
     FB.login((response: any) => {
       if (response.authResponse) {
-        this.loginService.login('facebook', response);
+        this.loginService.login('facebook', response).subscribe(_ => {
+          this.router.navigate(['/']);
+        });
       } else {
-        console.log("FB non riuscito")
+        this.messageService.error("FB non riuscito");
       }
     });
   }
@@ -65,9 +69,11 @@ export class LoginComponent implements OnInit {
     gapi.auth.authorize(params, (response: any) => {
       console.log(response);
       if (response && !response.error) {
-        this.loginService.login('google_oauth2', response);
+        this.loginService.login('google_oauth2', response).subscribe(_ => {
+          this.router.navigate(['/']);
+        });
       } else {
-        console.log("G+ non riuscito")
+        this.messageService.error("G+ non riuscito");
       }
     });
   }

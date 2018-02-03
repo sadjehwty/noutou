@@ -20,10 +20,24 @@ export class LoginService{
     return this.http.get<Keys>(this._global.baseAppUrl+url);
   }
   
+  logout(){
+    const url = `${this.loginUrl}/0`;
+    return this.http.delete<Keys>(this._global.baseAppUrl+url);
+  }
+  
   login(service:string, response: any){
-    const url = `${this.loginUrl}/${service}/callback`;
-    return this.http.post<Login>(this._global.baseAppUrl+url, response).pipe(
-      tap(login => {localStorage.setItem('jwt',login.auth_token);}));
+    const url = `/auth/${service}/callback`;
+    console.log(this._global.baseAppDomain+url);
+    return this.http.post<Login>(this._global.baseAppDomain+url, response).pipe(
+      tap(login => {
+        console.log('OK');
+        localStorage.setItem('jwt',login.auth_token);
+      }),
+      catchError(err => {
+        console.log('NO');
+        return err;
+      })
+    );
   }
 
 }
