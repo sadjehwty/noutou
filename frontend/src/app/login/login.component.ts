@@ -42,7 +42,9 @@ export class LoginComponent implements OnInit {
     FB.login((response: any) => {
       if (response.authResponse) {
         this.loginService.login('facebook', response).subscribe(_ => {
-          this.router.navigate(['/']);
+          let lastUrl=sessionStorage.getItem('lastUrl');
+          if(!lastUrl) lastUrl='/';
+          this.router.navigate([lastUrl]);
         });
       } else {
         this.messageService.error("FB non riuscito");
@@ -70,7 +72,9 @@ export class LoginComponent implements OnInit {
       if (response && !response.error) {
         delete response['g-oauth-window'];
         this.loginService.login('google_oauth2', response).subscribe(_ => {
-          this.router.navigate(['/']);
+          let lastUrl=sessionStorage.getItem('lastUrl');
+          if(!lastUrl) lastUrl='/';
+          this.router.navigate([lastUrl]);
         });
       } else {
         this.messageService.error("G+ non riuscito");

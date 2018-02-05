@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/observable/throw'
 import 'rxjs/add/operator/catch';
 import { MessageService } from './services/message.service';
-import { Router } from '@angular/router'; 
+import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
@@ -21,6 +21,7 @@ export class AuthInterceptor implements HttpInterceptor {
     .catch((error, caught) => {
       if(error.status==401){
         localStorage.removeItem('jwt');
+        sessionStorage.setItem('lastUrl',this.router.url);
         this.router.navigate(['/login']);
       }
       //intercept the respons error and displace it to the console
