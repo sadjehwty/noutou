@@ -67,8 +67,8 @@ export class LoginComponent implements OnInit {
           scope: 'email profile'
         };
     gapi.auth.authorize(params, (response: any) => {
-      console.log(response);
       if (response && !response.error) {
+        delete response['g-oauth-window'];
         this.loginService.login('google_oauth2', response).subscribe(_ => {
           this.router.navigate(['/']);
         });
