@@ -27,7 +27,6 @@ export class LoginService{
   
   login(service:string, response: any){
     const url = `/auth/${service}/callback`;
-    console.log(this._global.baseAppDomain+url);
     return this.http.post<Login>(this._global.baseAppDomain+url, response).pipe(
       tap(login => {
         console.log('OK');

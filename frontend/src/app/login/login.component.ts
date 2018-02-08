@@ -33,7 +33,9 @@ export class LoginComponent implements OnInit {
       });*/
       FB.init({
         appId: keys.facebook,
-        version: 'v2.6'
+        version: 'v2.6',
+        cookie: true,
+        scope: 'email,public_profile'
       });
     });
   }
