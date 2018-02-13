@@ -36,7 +36,7 @@ class AccessPolicy
       end
       # Travel
       can :read, Travel do |obj,usr|
-        obj.user==usr || obj.users.include?(usr)
+        read_travel? obj,usr
       end
       can :create, Travel
       can :update, Travel do |obj,usr|
@@ -53,22 +53,35 @@ class AccessPolicy
         obj.travel.user==usr
       end
       can :destoy, Participant do |obj,usr|
-        obj.travel.costs.shares.where('shares.user_id = ?', obj.user_id).count.zero?
+        empty_share? obj.travel.costs.shares,obj.user
       end
       # Costs
       can :read, Cost do |obj,usr|
-        obj.travel.user==usr || obj.travel.users.include?(usr)
+        read_cost? obj,usr
       end
-      can [:update,:destroy,:create], Cost do |obj,usr|
+      can [:update,:create], Cost do |obj,usr|
         obj.travel.user==usr
+      end
+      can :destroy, Cost do |obj,usr|
+        obj.travel.user==usr && empty_share?(obj.shares,usr)
       end
       # Shares
       can :read, Share do |obj,usr|
-        obj.cost.travel.user==usr || obj.cost.travel.users.include?(usr)
+        read_cost? obj.cost,usr
       end
       can [:update,:destroy,:create], Share do |obj,usr|
         obj.cost.travel.user==usr
       end
     end
+  end
+  private
+  def read_cost? obj,usr
+    read_travel? obj.travel,usr
+  end
+  def read_travel? obj,usr
+    obj.user==usr || obj.users.include?(usr)
+  end
+  def empty_share? objs, usr
+    objs.where('shares.user_id = ?', usr.id).count.zero?
   end
 end
