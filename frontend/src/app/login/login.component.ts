@@ -73,7 +73,7 @@ export class LoginComponent implements OnInit {
     gapi.auth.authorize(params, (response: any) => {
       if (response && !response.error) {
         delete response['g-oauth-window'];
-        this.loginService.login('google_oauth2', response).subscribe(_ => {
+        this.loginService.login('google_oauth2', this.objectToFormData(response)).subscribe(_ => {
           let lastUrl=sessionStorage.getItem('lastUrl');
           if(!lastUrl) lastUrl='/';
           this.router.navigate([lastUrl]);
@@ -82,5 +82,28 @@ export class LoginComponent implements OnInit {
         this.messageService.error("G+ non riuscito");
       }
     });
+  }
+  private
+  objectToFormData(obj, form, namespace):FormData {
+    var fd = form || new FormData();
+    var formKey;
+    for(var property in obj) {
+      if(obj.hasOwnProperty(property)) {
+        if(namespace) {
+          formKey = namespace + '[' + property + ']';
+        } else {
+          formKey = property;
+        }
+        // if the property is an object, but not a File,
+        // use recursivity.
+        if(typeof obj[property] === 'object' && !(obj[property] instanceof File)) {
+          objectToFormData(obj[property], fd, property);
+        } else {
+          // if it's a string or a File object
+          fd.append(formKey, obj[property]);
+        }
+      }
+    }
+    return fd;  
   }
 }
