@@ -25,18 +25,13 @@ export class LoginComponent implements OnInit {
   private getKeys():void{
     this.loginService.getKeys().subscribe(keys => {
       this.googleKey=keys.google;
-      /*WL.init({
-        client_id: keys.windows,
-        scope: ['wl.emails', 'wl.basic'],
-        response_type: 'code',
-        redirect_uri: 'https://jwt.macrobug.dev/Test'
-      });*/
       FB.init({
-        appId: keys.facebook,
-        version: 'v2.6',
-        cookie: true,
-        scope: 'email,public_profile'
-      });
+        appId      : keys.facebook,
+        cookie     : true,
+        xfbml      : true,
+        version    : 'v2.12',
+        scope      : 'email,public_profile'
+    });
     });
   }
   
@@ -53,15 +48,7 @@ export class LoginComponent implements OnInit {
       }
     });
   }
-  windows(){
-    /*WL.login().then((response: any) => {
-      if (response && !response.error) {
-        this.loginService.login('microsoft_live', response);
-      } else {
-        console.log("WL non riuscito")
-      }
-    });*/
-  }
+
   google(){
     let params={
           immediate: false,
