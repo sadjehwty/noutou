@@ -12,7 +12,6 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   FB: any;
-  WL: any;
   gapi: any;
   googleKey: string;
   
