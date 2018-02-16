@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Keys } from '../classes/keys';
+import { Login } from '../classes/login';
 import { LoginService } from '../services/login.service';
 import { MessageService } from '../services/message.service';
 import { Router } from '@angular/router';
@@ -37,7 +38,8 @@ export class LoginComponent implements OnInit {
   facebook(){
     FB.login((response: any) => {
       if (response.authResponse) {
-        this.loginService.login('facebook', response).subscribe(_ => {
+        this.loginService.login('facebook',response).subscribe(login => {
+          localStorage.setItem('jwt',login.auth_token);
           let lastUrl=sessionStorage.getItem('lastUrl');
           if(!lastUrl) lastUrl='/';
           this.router.navigate([lastUrl]);
@@ -59,7 +61,8 @@ export class LoginComponent implements OnInit {
     gapi.auth.authorize(params, (response: any) => {
       if (response && !response.error) {
         delete response['g-oauth-window'];
-        this.loginService.login('google_oauth2', this.objectToFormData(response)).subscribe(_ => {
+        this.loginService.login('google_oauth2', response).subscribe(login => {
+          localStorage.setItem('jwt',login.auth_token);
           let lastUrl=sessionStorage.getItem('lastUrl');
           if(!lastUrl) lastUrl='/';
           this.router.navigate([lastUrl]);

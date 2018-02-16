@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { catchError, map, tap } from 'rxjs/operators';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders,HttpParams } from '@angular/common/http';
 import { MessageService } from './message.service';
 import { Login } from '../classes/login';
 import { Keys } from '../classes/keys';
@@ -25,18 +25,29 @@ export class LoginService{
     return this.http.delete<Keys>(this._global.baseAppUrl+url);
   }
   
-  login(service:string, response: any){
+  login(service:string, data: any): Observable<Login>{
     const url = `/auth/${service}/callback`;
-    return this.http.get<Login>(this._global.baseAppDomain+url, response).pipe(
-      tap(login => {
-        console.log('OK');
-        localStorage.setItem('jwt',login.auth_token);
-      }),
-      catchError(err => {
-        console.log('NO');
-        return err;
-      })
-    );
+    return this.http.get<Login>(this._global.baseAppDomain+url, {params: this.objectToFormData(data)});
+  }
+  private
+  objectToFormData(obj: any, form?: HttpParams, namespace?: string):HttpParams {
+    var fd = form || new HttpParams();
+    var formKey;
+    for(var property in obj) {
+      if(obj.hasOwnProperty(property)) {
+        if(namespace) {
+          formKey = namespace + '[' + property + ']';
+        } else {
+          formKey = property;
+        }
+        if(typeof obj[property] === 'object' && !(obj[property] instanceof File)) {
+          this.objectToFormData(obj[property], fd, property);
+        } else {
+          fd=fd.set(formKey, obj[property]);
+        }
+      }
+    }
+    return fd;  
   }
 
 }
