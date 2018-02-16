@@ -27,7 +27,7 @@ export class LoginService{
   
   login(service:string, response: any){
     const url = `/auth/${service}/callback`;
-    return this.http.post<Login>(this._global.baseAppDomain+url, response).pipe(
+    return this.http.get<Login>(this._global.baseAppDomain+url, response).pipe(
       tap(login => {
         console.log('OK');
         localStorage.setItem('jwt',login.auth_token);
