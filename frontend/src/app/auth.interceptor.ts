@@ -11,7 +11,7 @@ export class AuthInterceptor implements HttpInterceptor {
   
   constructor(private messageService: MessageService, private router: Router) { }
   
-  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<any> {
     
     // Clone the request to add the new header.
     const authReq = req.url.match(/\/auth/) ? req.clone() : req.clone({ headers: req.headers.set("Content-Type", "application/json")});
