@@ -3,10 +3,16 @@ class ApplicationController < ActionController::API
   rescue_from "AccessGranted::AccessDenied" do |exception|
     render json: { error: 'Forbidden' }, status: 403
   end
+  rescue_from ActionController::RoutingError do |exception|
+    redirect_to "/#/#{exception.message}"
+  end
   
   attr_reader :current_user
   attr_reader :current_session
 
+  def catch_404
+    raise ActionController::RoutingError.new(params[:path])
+  end
   private
   def authenticate_request
     TokenCleanupJob.perform_later
