@@ -1,7 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { Subject } from 'rxjs/Subject';
-import { of } from 'rxjs/observable/of';
+import { Observable ,  Subject ,  of } from 'rxjs';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 import { Location } from '@angular/common';
 
