@@ -3,4 +3,5 @@
 .settings
 .buildpath
 .dbeaver*
+backend/public/*
 
